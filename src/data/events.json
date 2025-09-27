@@ -1,0 +1,32 @@
+[
+  {
+    "title": "IET Summer School",
+    "description": "Hands-on workshop for school students.",
+    "image": "/event/event1.jpg",
+    "status": "Happening"
+  },
+  {
+    "title": "IET Cipher",
+    "description": "A 2-hour coding challenge for students.",
+    "image": "/event/event2.jpg",
+    "status": "Completed"
+  },
+  {
+    "title": "Ice Cream Dansal",
+    "description": "Community Service.",
+    "image": "/event/event3.jpg",
+    "status": "Completed"
+  },
+  {
+    "title": "FusioNxt",
+    "description": "Gaming Competiton.",
+    "image": "/event/event4.jpg",
+    "status": "Coming Soon"
+  },
+  {
+    "title": "IET Installation Ceremony",
+    "description": "Installation Ceremony.",
+    "image": "/event/event5.jpg",
+    "status": "Completed"
+  }
+]
