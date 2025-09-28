@@ -12,7 +12,7 @@ export default function BackToTop() {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (scrollTop / docHeight) * 100;
       setScrollY(scrolled);
-      setVisible(scrollTop > 200); // show button after scrolling 200px
+      setVisible(scrollTop > 200); // show button after 200px
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -26,9 +26,11 @@ export default function BackToTop() {
   return visible ? (
     <div
       onClick={scrollToTop}
-      className="fixed bottom-8 right-8 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer shadow-xl z-50 transition-transform hover:scale-110"
+      className="fixed bottom-8 right-8 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:shadow-xl transition-transform hover:scale-110 active:scale-95 z-50"
       style={{
-        background: `conic-gradient(from 0deg, #3b82f6 ${scrollY * 3.6}deg, #60a5fa 0deg)`,
+        background: `conic-gradient(from 0deg, #2563eb ${
+          scrollY * 3.6
+        }deg, #9333ea 0deg)`,
       }}
     >
       <FiArrowUp size={26} className="text-white" />
