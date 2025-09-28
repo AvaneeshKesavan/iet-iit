@@ -17,11 +17,11 @@ export default function NavBar() {
     { name: "Contact", to: "contact", external: false },
   ];
 
-  const navbarHeight = 72;
-
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
+      const navbarEl = document.querySelector("nav");
+      const navbarHeight = navbarEl?.offsetHeight || 72;
       const elTop =
         el.getBoundingClientRect().top + window.scrollY - navbarHeight;
       window.scrollTo({ top: elTop, behavior: "smooth" });
@@ -38,7 +38,6 @@ export default function NavBar() {
     }
 
     if (location.pathname !== "/") {
-      // navigate to home and let Home component handle scrolling from state
       navigate("/", { state: { scrollTo: link.to } });
     } else {
       scrollToSection(link.to);
@@ -54,10 +53,9 @@ export default function NavBar() {
       setActiveLink(location.pathname);
     }
     setIsOpen(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  // Scroll listener for homepage to set active section
+  // Scroll listener for homepage
   useEffect(() => {
     if (location.pathname !== "/") return;
 
@@ -68,13 +66,13 @@ export default function NavBar() {
       sections.forEach((sec) => {
         const el = document.getElementById(sec);
         if (!el) return;
-        const offsetTop = el.offsetTop - navbarHeight - 20;
+        const offsetTop = el.offsetTop - 72 - 20; // 72 is navbar height
         if (window.scrollY >= offsetTop) current = sec;
       });
 
       const footerEl = document.getElementById("contact");
       if (footerEl) {
-        const footerTop = footerEl.offsetTop - navbarHeight - 20;
+        const footerTop = footerEl.offsetTop - 72 - 20;
         const scrollBottom = window.scrollY + window.innerHeight;
         if (
           scrollBottom >= footerTop ||
@@ -87,24 +85,29 @@ export default function NavBar() {
       setActiveLink(current);
     };
 
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [location.pathname]);
 
-  // helper guard: detect if motion is available (typeof safe even if undeclared)
   const hasMotion =
     typeof motion !== "undefined" && typeof AnimatePresence !== "undefined";
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
         <button
           onClick={() => handleClick({ to: "hero", external: false })}
           aria-label="Go to home"
           className="flex items-center gap-3"
         >
-          <img src="/assets/iet-logo.jpeg" alt="IET Logo" className="h-12" />
+          <div className="h-16 w-auto relative">
+            <img
+              src="/assets/iet-iit.png"
+              alt="IET Logo"
+              className="h-full object-contain"
+            />
+          </div>
         </button>
 
         {/* Desktop Links */}
@@ -121,8 +124,6 @@ export default function NavBar() {
                 <span className={isActive ? "text-blue-600" : ""}>
                   {link.name}
                 </span>
-
-                {/* underline: animated with Framer Motion when available, otherwise simple CSS */}
                 {hasMotion ? (
                   <motion.span
                     layout
@@ -158,7 +159,7 @@ export default function NavBar() {
         </div>
       </div>
 
-      {/* Mobile Menu (animated if framer-motion present) */}
+      {/* Mobile Menu */}
       {hasMotion ? (
         <AnimatePresence>
           {isOpen && (
@@ -191,7 +192,6 @@ export default function NavBar() {
           )}
         </AnimatePresence>
       ) : (
-        // fallback mobile menu (no framer-motion)
         isOpen && (
           <div className="md:hidden bg-white shadow-md">
             <div className="flex flex-col px-4 py-3 space-y-2">
