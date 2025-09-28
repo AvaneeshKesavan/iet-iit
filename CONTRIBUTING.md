@@ -9,13 +9,10 @@ We welcome contributions ranging from bug fixes and documentation improvements t
 
 - [Getting Started](#-getting-started)
 - [How to Contribute](#-how-to-contribute)
+- [Steps to Contribute](#-steps-to-contribute)
 - [Code Guidelines](#-code-guidelines)
-- [Submitting Changes](#-submitting-changes)
-- [Reporting Bugs](#-reporting-bugs)
-- [Requesting Features or Enhancements](#-requesting-features-or-enhancements)
-- [Improving Documentation](#-improving-documentation)
 - [Modules & Dependencies](#-modules--dependencies)
-- [Community Standards](#-community-standards)
+- [Issue & PR Management](#-issue--pr-management)
 
 ---
 
