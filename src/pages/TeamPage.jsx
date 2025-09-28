@@ -13,7 +13,7 @@ const teamMembers = [
   {
     name: "Dhulinde Thevarapperuma",
     position: "Vice President",
-    image: "/images/team2.jpeg",
+    image: "/images/team9.jpg",
     email: "Dhulinde@example.com",
     linkedin: "https://linkedin.com/in/Dhulinde-Thevarapperuma",
   },
@@ -48,7 +48,7 @@ const teamMembers = [
   {
     name: "Anusigan Sivananthan",
     position: "Director of Media",
-    image: "/images/team7.jpeg",
+    image: "/images/team9.jpg",
     email: "Anusigan@example.com",
     linkedin: "https://lk.linkedin.com/in/anusigan-sivananthan",
   },
