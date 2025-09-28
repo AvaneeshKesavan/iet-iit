@@ -90,19 +90,19 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24">
         {/* Left Text */}
         <motion.div
-          className="md:w-1/2 text-center md:text-left space-y-6"
+          className="md:w-1/2 text-center md:text-left space-y-4 sm:space-y-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
             {title || "Welcome to IET On Campus IIT"}
           </h1>
-          <p className="text-lg md:text-xl text-gray-200">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200">
             {subtitle ||
               "Empowering the next generation of engineers and innovators."}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 justify-center md:justify-start">
             {button1 && (
               <motion.a
                 href="https://docs.google.com/forms/d/your-form-id/viewform"
@@ -110,7 +110,7 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded font-semibold transition text-white shadow-lg"
+                className="flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded font-semibold transition text-white shadow-lg text-sm sm:text-base"
               >
                 <FaUsers /> {button1}
               </motion.a>
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 onClick={() => navigate("/events")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-blue-600 hover:bg-blue-600 hover:text-white rounded font-semibold transition text-blue-200 shadow-lg"
+                className="flex items-center gap-2 px-5 py-3 sm:px-6 sm:py-3 bg-transparent border-2 border-blue-600 hover:bg-blue-600 hover:text-white rounded font-semibold transition text-blue-200 shadow-lg text-sm sm:text-base"
               >
                 <FaCalendarAlt /> {button2}
               </motion.button>
@@ -130,46 +130,46 @@ export default function HeroSection() {
 
         {/* Right Countdown */}
         <motion.div
-          className="md:w-1/2 flex flex-col items-center bg-black/40 p-6 rounded-lg shadow-xl space-y-4"
+          className="md:w-1/2 flex flex-col items-center bg-black/40 p-4 sm:p-6 rounded-lg shadow-xl space-y-4 w-full"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1 text-center">
             {countdownEvent?.name || "Next Event"}
           </h2>
           {countdownEvent?.heading && (
-            <h3 className="text-xl md:text-2xl font-semibold text-blue-300 text-center">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-blue-300 text-center">
               {countdownEvent.heading}
             </h3>
           )}
           {countdownEvent?.description && (
-            <p className="text-sm md:text-base text-gray-300 text-center">
+            <p className="text-sm sm:text-base md:text-base text-gray-300 text-center">
               {countdownEvent.description}
             </p>
           )}
           {timeLeft ? (
-            <div className="grid grid-cols-4 gap-4 text-center text-white w-full">
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 text-center text-white w-full">
               {["days", "hours", "minutes", "seconds"].map((unit) => (
                 <motion.div
                   key={unit}
-                  className="bg-blue-800/70 rounded-lg px-4 py-3 shadow-md flex flex-col items-center justify-center"
+                  className="bg-blue-800/70 rounded-lg px-2 sm:px-4 py-2 sm:py-3 shadow-md flex flex-col items-center justify-center text-sm sm:text-base"
                   whileHover={{ scale: 1.05 }}
                 >
                   {iconMap[unit]}
-                  <span className="block text-3xl font-bold">
+                  <span className="block text-2xl sm:text-3xl font-bold">
                     {timeLeft[unit] || 0}
                   </span>
-                  <span className="uppercase text-xs">{unit}</span>
+                  <span className="uppercase text-xs sm:text-sm">{unit}</span>
                 </motion.div>
               ))}
             </div>
           ) : (
-            <div className="w-full bg-blue-700/80 rounded-lg p-6 shadow-xl flex flex-col items-center justify-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <div className="w-full bg-blue-700/80 rounded-lg p-4 sm:p-6 shadow-xl flex flex-col items-center justify-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 text-center">
                 Coming Soon
               </h2>
-              <p className="text-sm md:text-base text-blue-200 text-center">
+              <p className="text-sm sm:text-base md:text-base text-blue-200 text-center">
                 Stay tuned! Exciting updates are on the way.
               </p>
             </div>
@@ -178,11 +178,11 @@ export default function HeroSection() {
       </div>
 
       {/* Carousel Dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
         {images.map((_, idx) => (
           <button
             key={idx}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               currentImage === idx
                 ? "bg-white scale-110"
                 : "bg-gray-400 hover:bg-gray-300"

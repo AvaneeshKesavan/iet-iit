@@ -3,6 +3,7 @@ import {
   FaFacebookF,
   FaLinkedinIn,
   FaInstagram,
+  FaYoutube,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
@@ -48,10 +49,10 @@ export default function Footer() {
           <p className="flex items-center gap-3 group">
             <FaEnvelope className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
-              href="mailto:info@ietiit.lk"
+              href="mailto:ietoncampus@iit.ac.lk"
               className="hover:underline hover:text-blue-600 transition-colors duration-300"
             >
-              info@ietiit.lk
+              ietoncampus@iit.ac.lk
             </a>
           </p>
 
@@ -85,6 +86,11 @@ export default function Footer() {
                 link: "https://www.instagram.com/iet.iit/",
                 color: "hover:text-pink-500",
               },
+              {
+                icon: FaYoutube,
+                link: "https://www.youtube.com/@ietoncampusiit",
+                color: "hover:text-red-600",
+              },
             ].map((social, idx) => (
               <motion.a
                 key={idx}
@@ -111,10 +117,10 @@ export default function Footer() {
             rights reserved.
           </p>
           <p className="text-gray-500 text-sm">
-            IET On Campus IIT is a student-led initiative in collaboration with the
-            Institution of Engineering and Technology (IET), UK. At IIT, we aim
-            to inspire innovation, foster professional growth, and bridge the
-            gap between academia and industry through events, workshops, and
+            IET On Campus IIT is a student-led initiative in collaboration with
+            the Institution of Engineering and Technology (IET), UK. At IIT, we
+            aim to inspire innovation, foster professional growth, and bridge
+            the gap between academia and industry through events, workshops, and
             collaborative projects.
           </p>
         </div>
