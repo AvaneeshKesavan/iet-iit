@@ -14,6 +14,17 @@ import TeamPage from "./pages/TeamPage";
 import EventsPage from "./pages/EventsPage";
 import BackToTop from "./components/BackToTop";
 
+// ScrollToTop component
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
+
 function Home() {
   const location = useLocation();
 
@@ -56,6 +67,7 @@ function Home() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Ensures all route changes scroll to top */}
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
