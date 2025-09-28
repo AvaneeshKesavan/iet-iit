@@ -1,19 +1,19 @@
 [
   {
     "title": "IET Summer School",
-    "description": "Hands-on workshop for school students.",
+    "description": "The IET Summer School is a 4-week technology awareness programme designed to inspire and empower students from schools and universities. ",
     "image": "/event/event1.jpg",
     "status": "Happening"
   },
   {
-    "title": "IET Cipher",
-    "description": "A 2-hour coding challenge for students.",
+    "title": "CIPHER Event",
+    "description": "The IET Cipher Hackathon challenges students to decode, innovate, and excel through competitive programming and problem-solving. ",
     "image": "/event/event2.jpg",
     "status": "Completed"
   },
   {
-    "title": "Ice Cream Dansal",
-    "description": "Community Service.",
+    "title": "Ice Cream Dansala",
+    "description": "The IET on Campus IIT successfully conducted an ice cream dansala, demonstrating our chapter's commitment to community service and cultural engagement.",
     "image": "/event/event3.jpg",
     "status": "Completed"
   },
@@ -25,7 +25,13 @@
   },
   {
     "title": "IET Installation Ceremony",
-    "description": "Installation Ceremony.",
+    "description": "The IET On Campus IIT Term 24/25 Installation Ceremony exemplified our dedication to fostering future engineers.",
+    "image": "/event/event5.jpg",
+    "status": "Completed"
+  },
+  {
+    "title": "UOW Contest",
+    "description": "Our IET chapter successfully partnered with Westminster Business School to deliver an International App Creation & Brand Development Bootcamp, where students developed innovative solutions for Global South producers. ",
     "image": "/event/event5.jpg",
     "status": "Completed"
   }
