@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom"; // ✅ Import Link
 import eventsData from "../data/events.json";
 
 export default function EventsSection() {
@@ -104,7 +105,7 @@ export default function EventsSection() {
           className="text-center mt-24"
         >
           <Link
-            to="/events"
+            to="/events" // ✅ Use Link instead of <a>
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors duration-300"
           >
             View All Events
