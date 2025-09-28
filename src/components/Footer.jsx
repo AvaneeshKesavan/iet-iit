@@ -123,7 +123,7 @@ export default function Footer() {
       {/* Logos at the bottom */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-16 flex justify-center items-end gap-16">
         {[
-          { src: "/assets/iet-logo.jpeg", alt: "IET On Campus IIT" },
+          { src: "/assets/iet-iit.png", alt: "IET On Campus IIT" },
           {
             src: "/assets/iit_logo.png",
             alt: "IIT Logo",
@@ -146,7 +146,9 @@ export default function Footer() {
             <img
               src={logo.src}
               alt={logo.alt}
-              className="h-12 object-contain"
+              className={`object-contain ${
+                idx === 0 ? "h-16 translate-y-2" : "h-12"
+              }`}
             />
           </motion.a>
         ))}
