@@ -7,40 +7,40 @@ We welcome contributions ranging from bug fixes and documentation improvements t
 
 ## Table of Contents
 
-- [Getting Started](#-getting-started)
-- [How to Contribute](#-how-to-contribute)
-- [Steps to Contribute](#-steps-to-contribute)
-- [Code Guidelines](#-code-guidelines)
-- [Modules & Dependencies](#-modules--dependencies)
-- [Issue & PR Management](#-issue--pr-management)
+- [Getting Started](#getting-started)
+- [How to Contribute](#how-to-contribute)
+- [Steps to Contribute](#steps-to-contribute)
+- [Code Guidelines](#code-guidelines)
+- [Modules & Dependencies](#modules--dependencies)
+- [Reporting Bugs](#reporting-bugs)
+- [Requesting Features or Enhancements](#requesting-features-or-enhancements)
+- [Improving Documentation](#improving-documentation)
+- [Issue & PR Management](#issue--pr-management)
 
 ---
 
 ## Getting Started
 
 ### 1. Fork the Repository
-
 Click the **Fork** button at the top-right of this repository to create your copy.
 
 ### 2. Clone your fork
-
 ```bash
 git clone https://github.com/your-username/iet-website.git
 cd iet-website
 ```
 
 ### 3. Install Dependencies
-
 ```bash
 npm install
 ```
-Note: Use TailwindCSS v3 only. TailwindCSS v4 is not supported in this project.
+**Note:** Use TailwindCSS v3 only. TailwindCSS v4 is not supported in this project.
 
 ### 4. Run the Development Server
 ```bash
 npm run dev
 ```
-Visit http://localhost:5173 to see the website locally.
+Visit `http://localhost:5173` to see the website locally.
 
 ---
 
@@ -63,18 +63,22 @@ Here are some ways you can contribute:
 ```bash
 git checkout -b feature/your-feature-name
 ```
+
 ### 2. Make your changes in the codebase.
+
 ### 3. Commit your changes:
 ```bash
 git add .
 git commit -m "Add: Meaningful description of your change"
 ```
+
 ### 4. Push to your fork:
 ```bash
 git push origin feature/your-feature-name
 ```
+
 ### 5. Open a Pull Request (PR) against the main branch of the original repository.
-If your PR fixes an issue, include Fixes #issue-number in the PR description.
+If your PR fixes an issue, include `Fixes #issue-number` in the PR description.
 
 ---
 
@@ -93,7 +97,24 @@ If your PR fixes an issue, include Fixes #issue-number in the PR description.
 - React Icons (Font Awesome)
 - Node.js v18+ (recommended)
 - npm 9+ (recommended)
+
 Always ensure your local setup matches the versions above.
+
+---
+
+## Reporting Bugs
+- Provide a clear title and description.
+- Include steps to reproduce.
+- Add screenshots if applicable.
+
+## Requesting Features or Enhancements
+- Provide a descriptive title.
+- Explain the need and expected behavior.
+- Include mockups if it's a UI/UX feature.
+
+## Improving Documentation
+- Point out unclear, outdated, or missing sections.
+- Suggest improved content.
 
 ---
 
@@ -102,5 +123,8 @@ Always ensure your local setup matches the versions above.
 - Keep your branch up-to-date with main:
 ```bash
 git fetch origin
-git pull origin main
+ git pull origin main
 ```
+- Assign issues properly before starting work.
+
+---
