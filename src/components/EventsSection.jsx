@@ -103,12 +103,12 @@ export default function EventsSection() {
           viewport={{ once: true }}
           className="text-center mt-24"
         >
-          <a
-            href="/events"
+          <Link
+            to="/events"
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors duration-300"
           >
             View All Events
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
