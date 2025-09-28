@@ -1,4 +1,4 @@
-# IET On Campus – IIT Website
+# IET On Campus IIT Website
 
 Welcome to the official repository of **IET On Campus – Informatics Institute of Technology**!  
 

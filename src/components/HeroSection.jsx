@@ -95,8 +95,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
-            {title || "Welcome to IET on Campus"}
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+            {title || "Welcome to IET On Campus IIT"}
           </h1>
           <p className="text-lg md:text-xl text-gray-200">
             {subtitle ||
@@ -104,13 +104,16 @@ export default function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             {button1 && (
-              <motion.button
+              <motion.a
+                href="https://docs.google.com/forms/d/your-form-id/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded font-semibold transition text-white shadow-lg"
               >
                 <FaUsers /> {button1}
-              </motion.button>
+              </motion.a>
             )}
             {button2 && (
               <motion.button
