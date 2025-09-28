@@ -105,25 +105,29 @@ export default function TeamPage() {
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                className="relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
+                className="relative bg-white rounded-lg shadow-md overflow-hidden cursor-pointer flex flex-col h-full"
               >
                 {/* Gradient border on hover */}
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-0 hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
 
                 {/* Profile Picture & Info */}
-                <div className="relative z-10 p-6 flex flex-col items-center">
+                <div className="relative z-10 p-6 flex flex-col flex-1 items-center">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4"
                   />
-                  <h3 className="text-xl font-semibold mb-1 text-black">
-                    {member.name}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{member.position}</p>
+                  <div className="flex flex-col items-center flex-1">
+                    <h3 className="text-xl font-semibold mb-1 text-black min-h-[3rem] text-center">
+                      {member.name}
+                    </h3>
+                    <p className="text-gray-600 mb-4 text-center min-h-[2rem]">
+                      {member.position}
+                    </p>
+                  </div>
 
                   {/* Icons */}
-                  <div className="flex space-x-4 text-lg text-blue-600">
+                  <div className="flex space-x-4 text-lg text-blue-600 mt-auto">
                     <a
                       href={`mailto:${member.email}`}
                       className="hover:text-blue-700 transition"

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom"; // ✅ Import Link
+import { Link } from "react-router-dom";
 import eventsData from "../data/events.json";
 
 export default function EventsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const eventsToShow = 3; // Number of events visible at a time
+  const eventsToShow = 3;
 
-  // Auto-scroll carousel every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % eventsData.length);
@@ -15,7 +14,6 @@ export default function EventsSection() {
     return () => clearInterval(interval);
   }, []);
 
-  // Get visible events for carousel
   const visibleEvents = [];
   for (let i = 0; i < eventsToShow; i++) {
     visibleEvents.push(eventsData[(currentIndex + i) % eventsData.length]);
@@ -60,7 +58,7 @@ export default function EventsSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
               >
-                <div className="relative group bg-white border-2 border-blue-400 rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
+                <div className="relative group bg-white border-2 border-blue-400 rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300 flex flex-col h-full">
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-500 to-pink-500 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
 
@@ -69,11 +67,12 @@ export default function EventsSection() {
                     alt={event.title}
                     className="w-full h-56 object-cover"
                   />
-                  <div className="p-6 flex flex-col gap-2 relative z-10">
-                    <h3 className="text-xl font-semibold text-black">
+
+                  <div className="p-6 flex flex-col gap-2 relative z-10 flex-1">
+                    <h3 className="text-xl font-semibold text-black min-h-[2.5rem]">
                       {event.title}
                     </h3>
-                    <p className="text-gray-700">{event.description}</p>
+                    <p className="text-gray-700 flex-1">{event.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -105,7 +104,7 @@ export default function EventsSection() {
           className="text-center mt-24"
         >
           <Link
-            to="/events" // ✅ Use Link instead of <a>
+            to="/events"
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-semibold transition-colors duration-300"
           >
             View All Events

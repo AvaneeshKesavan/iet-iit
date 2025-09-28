@@ -3,14 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import eventsData from "../data/events.json";
 
 export default function EventsPage() {
-  const [filter, setFilter] = useState("All"); // Default: All Events
+  const [filter, setFilter] = useState("All");
 
-  // Filter events based on status
   const filteredEvents = eventsData.filter((event) => {
     if (filter === "Upcoming")
       return event.status === "Happening" || event.status === "Coming Soon";
     if (filter === "Past") return event.status === "Completed";
-    return true; // All Events
+    return true;
   });
 
   return (
@@ -61,7 +60,6 @@ export default function EventsPage() {
             <AnimatePresence>
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event, idx) => {
-                  // Generate a sample date if not provided
                   const randomDate =
                     event.date ||
                     `2025-${String(Math.floor(Math.random() * 12 + 1)).padStart(
@@ -79,7 +77,7 @@ export default function EventsPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20 }}
                       transition={{ duration: 0.4, delay: idx * 0.1 }}
-                      className="relative bg-white rounded-lg overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                      className="relative bg-white rounded-lg overflow-hidden shadow-md transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col h-full"
                     >
                       {/* Gradient Border */}
                       <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-0 hover:opacity-100 pointer-events-none transition-opacity duration-300"></div>
@@ -95,16 +93,16 @@ export default function EventsPage() {
                       </div>
 
                       {/* Card Content */}
-                      <div className="p-6 relative z-10">
-                        <h3 className="text-xl font-semibold mb-2 text-black">
+                      <div className="p-6 relative z-10 flex flex-col flex-1">
+                        <h3 className="text-xl font-semibold mb-2 min-h-[2.5rem] text-black">
                           {event.title}
                         </h3>
-                        <p className="text-gray-700 text-sm md:text-base mb-4">
+                        <p className="text-gray-700 text-sm md:text-base flex-1">
                           {event.description}
                         </p>
 
                         {/* Bottom Flex: Badge + Date */}
-                        <div className="flex justify-between items-center mt-4">
+                        <div className="flex justify-between items-center mt-4 min-h-[2.5rem]">
                           <span
                             className={`px-3 py-1 rounded-full text-white text-sm font-semibold ${
                               event.status === "Completed"
