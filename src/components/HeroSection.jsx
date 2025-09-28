@@ -6,6 +6,7 @@ import {
   FaHourglassHalf,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import heroData from "../data/hero.json";
 
 export default function HeroSection() {
@@ -20,15 +21,17 @@ export default function HeroSection() {
     countdownEvent,
   } = data;
 
+  // Background carousel state
   const [currentImage, setCurrentImage] = useState(0);
   useEffect(() => {
     if (!images.length) return;
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [images]);
 
+  // Countdown state
   const [timeLeft, setTimeLeft] = useState({});
   useEffect(() => {
     if (!countdownEvent?.dateTime) return;
@@ -59,24 +62,39 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden">
-      {/* Background Carousel */}
-      {images.map((img, idx) => (
-        <div
-          key={idx}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-            currentImage === idx ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ backgroundImage: `url(${img})`, filter: "brightness(0.4)" }}
-        ></div>
-      ))}
+      {/* Background Carousel with Smooth Fade */}
+      <AnimatePresence>
+        {images.map(
+          (img, idx) =>
+            currentImage === idx && (
+              <motion.div
+                key={idx}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${img})`,
+                  filter: "brightness(0.4)",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2 }}
+              />
+            )
+        )}
+      </AnimatePresence>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-32">
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-24">
         {/* Left Text */}
-        <div className="md:w-1/2 text-center md:text-left space-y-6">
+        <motion.div
+          className="md:w-1/2 text-center md:text-left space-y-6"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
             {title || "Welcome to IET on Campus"}
           </h1>
@@ -86,23 +104,34 @@ export default function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             {button1 && (
-              <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded font-semibold transition text-white shadow-lg">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded font-semibold transition text-white shadow-lg"
+              >
                 <FaUsers /> {button1}
-              </button>
+              </motion.button>
             )}
             {button2 && (
-              <button
+              <motion.button
                 onClick={() => navigate("/events")}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
                 className="flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-blue-600 hover:bg-blue-600 hover:text-white rounded font-semibold transition text-blue-200 shadow-lg"
               >
                 <FaCalendarAlt /> {button2}
-              </button>
+              </motion.button>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Countdown */}
-        <div className="md:w-1/2 flex flex-col items-center bg-black/40 p-6 rounded-lg shadow-xl space-y-4">
+        <motion.div
+          className="md:w-1/2 flex flex-col items-center bg-black/40 p-6 rounded-lg shadow-xl space-y-4"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
             {countdownEvent?.name || "Next Event"}
           </h2>
@@ -119,16 +148,17 @@ export default function HeroSection() {
           {timeLeft ? (
             <div className="grid grid-cols-4 gap-4 text-center text-white w-full">
               {["days", "hours", "minutes", "seconds"].map((unit) => (
-                <div
+                <motion.div
                   key={unit}
                   className="bg-blue-800/70 rounded-lg px-4 py-3 shadow-md flex flex-col items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
                 >
                   {iconMap[unit]}
                   <span className="block text-3xl font-bold">
                     {timeLeft[unit] || 0}
                   </span>
                   <span className="uppercase text-xs">{unit}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           ) : (
@@ -141,7 +171,7 @@ export default function HeroSection() {
               </p>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
 
       {/* Carousel Dots */}
@@ -149,14 +179,17 @@ export default function HeroSection() {
         {images.map((_, idx) => (
           <button
             key={idx}
-            className={`w-3 h-3 rounded-full ${
-              currentImage === idx ? "bg-white" : "bg-gray-400"
+            className={`w-3 h-3 rounded-full transition-all ${
+              currentImage === idx
+                ? "bg-white scale-110"
+                : "bg-gray-400 hover:bg-gray-300"
             }`}
             onClick={() => setCurrentImage(idx)}
           ></button>
         ))}
       </div>
 
+      {/* Gradient animation */}
       <style>
         {`
           @keyframes gradient-x {
@@ -166,7 +199,7 @@ export default function HeroSection() {
           }
           .animate-gradient-x {
             background-size: 200% auto;
-            animation: gradient-x 5s linear infinite;
+            animation: gradient-x 6s linear infinite;
           }
         `}
       </style>
