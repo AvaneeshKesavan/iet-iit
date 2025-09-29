@@ -60,6 +60,8 @@ export default function HeroSection() {
     seconds: <FaUsers className="mx-auto text-xl mb-1" />,
   };
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <section className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden">
       {/* Background Carousel with Smooth Fade */}
@@ -67,13 +69,16 @@ export default function HeroSection() {
         {images.map(
           (img, idx) =>
             currentImage === idx && (
-              <motion.div
+              <motion.img
                 key={idx}
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${img})`,
-                  filter: "brightness(0.4)",
-                }}
+                src={img}
+                alt={`Slide ${idx + 1}`}
+                loading="lazy"
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+                  isLoaded ? "blur-0 scale-100" : "blur-lg scale-105"
+                }`}
+                style={{ filter: "brightness(0.4)" }}
+                onLoad={() => setIsLoaded(true)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -83,7 +88,7 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      {/* Overlay */}
+      {/* Overlay (kept for extra darkening) */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
