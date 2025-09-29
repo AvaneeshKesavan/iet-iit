@@ -118,7 +118,7 @@ export default function Footer() {
           </p>
           <p className="text-gray-500 text-sm">
             IET On Campus IIT is a student-led initiative in collaboration with
-            the Institution of Engineering and Technology (IET), UK. At IIT, we
+            the Institution of Engineering and Technology (IET), UK. At IET, we
             aim to inspire innovation, foster professional growth, and bridge
             the gap between academia and industry through events, workshops, and
             collaborative projects.
@@ -127,7 +127,7 @@ export default function Footer() {
       </div>
 
       {/* Logos at the bottom */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-16 flex justify-center items-end gap-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-5 mb-16 flex justify-center items-end gap-6 md:gap-24 scale-120">
         {[
           { src: "/assets/iet-iit.png", alt: "IET On Campus IIT" },
           {

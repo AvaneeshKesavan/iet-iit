@@ -70,7 +70,7 @@ export default function AboutSection() {
             className="flex justify-center"
           >
             <img
-              src="/assets/iet.jpg"
+              src="/assets/iet.iit.jpg"
               alt="About IET IIT"
               className="w-full max-w-md"
             />
