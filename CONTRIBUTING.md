@@ -26,7 +26,7 @@ Click the **Fork** button at the top-right of this repository to create your cop
 
 ### 2. Clone your fork
 ```bash
-git clone https://github.com/your-username/iet-website.git
+git clone https://github.com/your-username/iet-iit.git
 cd iet-website
 ```
 
@@ -123,7 +123,7 @@ Always ensure your local setup matches the versions above.
 - Keep your branch up-to-date with main:
 ```bash
 git fetch origin
- git pull origin main
+git pull origin main
 ```
 - Assign issues properly before starting work.
 
