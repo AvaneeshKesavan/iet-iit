@@ -110,7 +110,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 justify-center md:justify-start">
             {button1 && (
               <motion.a
-                href="https://docs.google.com/forms/d/your-form-id/viewform"
+                href="https://forms.gle/13rS5iqqSHh3rWSv9"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

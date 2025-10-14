@@ -42,7 +42,7 @@ export default function Footer() {
               href="tel:+94123456789"
               className="hover:underline hover:text-blue-600 transition-colors duration-300"
             >
-              +94 123 456 789
+              +94 76 888 7795
             </a>
           </p>
 
@@ -59,7 +59,7 @@ export default function Footer() {
           <p className="flex items-center gap-3 group">
             <FaUsers className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
-              href="https://forms.gle/YOUR_GOOGLE_FORM_LINK"
+              href="https://forms.gle/13rS5iqqSHh3rWSv9"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline hover:text-blue-600 transition-colors duration-300 font-medium"
