@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion"; // ensure framer-motion installed
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +66,7 @@ export default function NavBar() {
       sections.forEach((sec) => {
         const el = document.getElementById(sec);
         if (!el) return;
-        const offsetTop = el.offsetTop - 72 - 20; // 72 is navbar height
+        const offsetTop = el.offsetTop - 72 - 20;
         if (window.scrollY >= offsetTop) current = sec;
       });
 

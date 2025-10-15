@@ -18,7 +18,7 @@ import Cipher from "./pages/Cipher";
 import Dansala from "./pages/Dansala";
 import Installation from "./pages/Installation";
 import UOWContest from "./pages/UOWContest";
-import ContactPage from "./pages/ContactPage"; // NEW
+import ContactPage from "./pages/ContactPage";
 import BackToTop from "./components/BackToTop";
 
 // ScrollToTop component

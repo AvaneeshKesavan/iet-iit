@@ -21,13 +21,13 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("Sending...");
 
-    // Simulate sending email
+
     setTimeout(() => {
-      console.log("Email sent to:", "kesavan.avaneesh@gmail.com", formData);
+      console.log("Email sent to:", "ietoncampus@iit.ac.lk", formData);
       setStatus("Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "" });
 
-      // Reload page after 1.5s
+
       setTimeout(() => {
         window.location.reload();
       }, 1500);
