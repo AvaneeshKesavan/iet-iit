@@ -1,44 +1,50 @@
 [
   {
     "title": "IET Summer School",
-    "description": "The IET Summer School is a 4-week technology awareness programme designed to inspire and empower students from schools and universities. ",
+    "description": "The IET Summer School is a 4-week technology awareness programme designed to inspire and empower students from schools and universities.",
     "image": "/event/event1.jpg",
     "status": "Completed",
-    "date": "2025-07-25"
+    "date": "2025-07-25",
+    "link": "/events/summerschool"
   },
   {
     "title": "CIPHER Event",
-    "description": "The IET Cipher Hackathon challenges students to decode, innovate, and excel through competitive programming and problem-solving. ",
+    "description": "The IET Cipher Hackathon challenges students to decode, innovate, and excel through competitive programming and problem-solving.",
     "image": "/event/event2.jpg",
     "status": "Completed",
-    "date": "2025-03-21"
+    "date": "2025-03-21",
+    "link": "/events/cipher"
   },
   {
     "title": "Ice Cream Dansala",
     "description": "The IET on Campus IIT successfully conducted an ice cream dansala, demonstrating our chapter's commitment to community service and cultural engagement.",
     "image": "/event/event3.jpg",
     "status": "Completed",
-    "date": "2025-05-14"
+    "date": "2025-05-14",
+    "link": "/events/dansala"
   },
   {
     "title": "FusioNxt",
-    "description": "Gaming Competiton.",
+    "description": "Gaming Competition.",
     "image": "/event/event4.jpg",
     "status": "Coming Soon",
-    "date": "2025-00-00"
+    "date": "2025-00-00",
+    "link": "/events/FusioNxt"
   },
   {
     "title": "IET Installation Ceremony",
     "description": "The IET On Campus IIT Term 24/25 Installation Ceremony exemplified our dedication to fostering future engineers.",
     "image": "/event/event5.jpg",
     "status": "Completed",
-    "date": "2024-11-08"
+    "date": "2024-11-08",
+    "link": "/events/installation"
   },
   {
     "title": "UOW Contest",
-    "description": "Our IET chapter successfully partnered with Westminster Business School to deliver an International App Creation & Brand Development Bootcamp, where students developed innovative solutions for Global South producers. ",
+    "description": "Our IET chapter successfully partnered with Westminster Business School to deliver an International App Creation & Brand Development Bootcamp, where students developed innovative solutions for Global South producers.",
     "image": "/event/event6.jpg",
     "status": "Completed",
-    "date": "2025-02-21"
+    "date": "2025-02-21",
+    "link": "/events/uowcontest"
   }
 ]
