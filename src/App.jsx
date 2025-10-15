@@ -12,6 +12,13 @@ import EventsSection from "./components/EventsSection";
 import Footer from "./components/Footer";
 import TeamPage from "./pages/TeamPage";
 import EventsPage from "./pages/EventsPage";
+import FusionNxt from "./pages/FusioNxt";
+import SummerSchool from "./pages/SummerSchool";
+import Cipher from "./pages/Cipher";
+import Dansala from "./pages/Dansala";
+import Installation from "./pages/Installation";
+import UOWContest from "./pages/UOWContest";
+import ContactPage from "./pages/ContactPage"; // NEW
 import BackToTop from "./components/BackToTop";
 
 // ScrollToTop component
@@ -67,7 +74,7 @@ function Home() {
 export default function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Ensures all route changes scroll to top */}
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -86,6 +93,24 @@ export default function App() {
           element={
             <>
               <EventsPage />
+              <Footer />
+              <BackToTop />
+            </>
+          }
+        />
+        <Route path="/events/fusioNxt" element={<FusionNxt />} />
+        <Route path="/events/summerschool" element={<SummerSchool />} />
+        <Route path="/events/cipher" element={<Cipher />} />
+        <Route path="/events/dansala" element={<Dansala />} />
+        <Route path="/events/installation" element={<Installation />} />
+        <Route path="/events/uowcontest" element={<UOWContest />} />
+
+        {/* CONTACT PAGE ROUTE */}
+        <Route
+          path="/contact"
+          element={
+            <>
+              <ContactPage />
               <Footer />
               <BackToTop />
             </>
