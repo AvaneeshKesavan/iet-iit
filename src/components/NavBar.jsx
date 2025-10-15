@@ -14,7 +14,7 @@ export default function NavBar() {
     { name: "About", to: "about", external: false },
     { name: "Our Work", to: "/events", external: true },
     { name: "Team", to: "/team", external: true },
-    { name: "Contact", to: "contact", external: false },
+    { name: "Contact", to: "/contact", external: true },
   ];
 
   const scrollToSection = (id) => {
