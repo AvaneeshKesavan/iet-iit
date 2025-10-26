@@ -5,15 +5,16 @@
     "button1": "Join Our Community",
     "button2": "Explore Events",
     "images": [
+      "/hero/hero5.jpg",
       "/hero/hero1.jpg",
       "/hero/hero2.jpg",
       "/hero/hero3.jpg",
       "/hero/hero4.jpg"
     ],
     "countdownEvent": {
-      "name": "FusioNxt",
+      "name": "FusioNxt - Workshop 1",
       "description": "A festival of games, exhibitions, and workshops you can’t miss!",
-      "dateTime": "2005-12-31T23:59:59"
+      "dateTime": "2025-11-08T23:59:59"
     }
   }
 ]

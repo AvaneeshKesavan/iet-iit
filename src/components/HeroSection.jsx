@@ -56,8 +56,8 @@ export default function HeroSection() {
   const iconMap = {
     days: <FaCalendarAlt className="mx-auto text-xl mb-1" />,
     hours: <FaClock className="mx-auto text-xl mb-1" />,
-    minutes: <FaHourglassHalf className="mx-auto text-xl mb-1" />,
-    seconds: <FaUsers className="mx-auto text-xl mb-1" />,
+    minutes: <FaClock className="mx-auto text-xl mb-1" />,
+    seconds: <FaHourglassHalf className="mx-auto text-xl mb-1" />,
   };
 
   const [isLoaded, setIsLoaded] = useState(false);
