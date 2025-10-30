@@ -21,7 +21,7 @@ export default function UOWContest() {
             South producers.
           </p>
 
-          {/* Event Image */}
+          {/* Event Hero Image */}
           <div className="flex justify-center mb-12">
             <img
               src="/event/event6.jpg"

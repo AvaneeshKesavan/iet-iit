@@ -2,8 +2,20 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
+import { motion } from "framer-motion";
 
 export default function Cipher() {
+  const galleryImages = [
+    "/event/cipher1.jpg",
+    "/event/cipher2.jpg",
+    "/event/cipher3.jpg",
+    "/event/cipher4.jpg",
+    "/event/cipher5.jpg",
+    "/event/cipher6.jpg",
+    "/event/cipher7.jpg",
+    "/event/cipher8.jpg",
+  ];
+
   return (
     <>
       <NavBar />
@@ -19,17 +31,17 @@ export default function Cipher() {
             and excel through competitive programming and problem-solving.
           </p>
 
-          {/* Event Image */}
+          {/* Event Hero Image */}
           <div className="flex justify-center mb-12">
             <img
               src="/event/event2.jpg"
               alt="CIPHER Event"
-              className="rounded-2xl shadow-lg w-full md:w-3/4 object-cover"
+              className="rounded-2xl shadow-xl w-full md:w-3/4 object-cover"
             />
           </div>
 
           {/* Event Details */}
-          <div className="text-gray-800 max-w-4xl mx-auto leading-relaxed text-justify">
+          <div className="text-gray-800 max-w-4xl mx-auto leading-relaxed text-justify mb-16">
             <p className="mb-6">
               This inclusive event welcomes participants of all skill levels,
               fostering collaboration, technical growth, and innovative thinking
@@ -51,8 +63,33 @@ export default function Cipher() {
               environment.
             </p>
           </div>
+
+          {/* Gallery Section */}
+          <section className="max-w-7xl mx-auto px-4 md:px-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10 tracking-tight bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Event Gallery
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {galleryImages.map((img, idx) => (
+                <motion.div
+                  key={idx}
+                  className="overflow-hidden rounded-xl shadow-lg cursor-pointer group"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={img}
+                    alt={`Gallery ${idx + 1}`}
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </section>
         </section>
       </main>
+
       <Footer />
       <BackToTop />
     </>
