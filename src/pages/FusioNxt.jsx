@@ -1,14 +1,83 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 
 export default function FusionNxt() {
+  const bookingRefs = {
+    finance: useRef(null),
+    organising: useRef(null),
+    outreach: useRef(null),
+    pr: useRef(null),
+    compering: useRef(null),
+    photography: useRef(null),
+  };
+
+  // Separate links for each booking
+  const bookingLinks = {
+    finance:
+      "https://calendar.google.com/calendar/appointments/schedules/FINANCE_LINK",
+    organising:
+      "https://calendar.google.com/calendar/appointments/schedules/ORGANISING_LINK",
+    outreach:
+      "https://calendar.google.com/calendar/appointments/schedules/OUTREACH_LINK",
+    pr: "https://calendar.google.com/calendar/appointments/schedules/PR_LINK",
+    compering:
+      "https://calendar.google.com/calendar/appointments/schedules/COMPERING_LINK",
+    photography:
+      "https://calendar.google.com/calendar/appointments/schedules/PHOTOGRAPHY_LINK",
+  };
+
+  useEffect(() => {
+    // Load CSS
+    if (!window.__calendarCSSLoaded) {
+      const link = document.createElement("link");
+      link.href =
+        "https://calendar.google.com/calendar/scheduling-button-script.css";
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+      window.__calendarCSSLoaded = true;
+    }
+
+    // Load script once
+    if (!window.__calendarScriptLoaded) {
+      const script = document.createElement("script");
+      script.src =
+        "https://calendar.google.com/calendar/scheduling-button-script.js";
+      script.async = true;
+      script.onload = initializeButtons;
+      document.body.appendChild(script);
+      window.__calendarScriptLoaded = true;
+    } else {
+      // If script already loaded, try initializing
+      initializeButtons();
+    }
+
+    function initializeButtons() {
+      Object.entries(bookingRefs).forEach(([key, ref]) => {
+        if (
+          ref?.current &&
+          !ref.current.dataset.loaded &&
+          window.calendar?.schedulingButton
+        ) {
+          ref.current.innerHTML = "";
+          window.calendar.schedulingButton.load({
+            url: bookingLinks[key],
+            color: "#039BE5",
+            label: "Book an appointment",
+            target: ref.current,
+          });
+          ref.current.dataset.loaded = "true";
+        }
+      });
+    }
+  }, []);
+
   return (
     <>
       <NavBar />
       <main className="pt-16 bg-gray-50">
-        {/* Event Header */}
         <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
           <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6 tracking-tight bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             FusioNxt
@@ -20,7 +89,6 @@ export default function FusionNxt() {
             enthusiasts for a fun and challenging event experience.
           </p>
 
-          {/* Event Image */}
           <div className="flex justify-center mb-12">
             <img
               src="/event/event4.jpg"
@@ -29,28 +97,53 @@ export default function FusionNxt() {
             />
           </div>
 
-          {/* Event Details */}
-          <div className="text-gray-800 max-w-4xl mx-auto leading-relaxed text-justify">
+          <div className="text-gray-800 max-w-4xl mx-auto leading-relaxed text-justify mb-16">
             <p className="mb-6">
               FusioNxt aims to celebrate creativity, teamwork, and innovation in
-              the field of gaming. The event features multiple categories,
-              including competitive e-sports, coding challenges, and interactive
-              tech exhibitions. Participants can showcase their technical and
-              strategic skills while engaging with peers across various
-              disciplines.
+              gaming. The event features multiple categories, including
+              competitive e-sports, coding challenges, and interactive tech
+              exhibitions.
             </p>
-
             <p className="mb-6">
-              Whether you're a passionate gamer or a developer fascinated by the
-              mechanics of interactive entertainment, FusioNxt offers a platform
-              to connect, compete, and learn. Prizes and recognition await top
-              performers, along with valuable networking opportunities.
+              Whether you're a gamer or developer, FusioNxt offers a platform to
+              connect, compete, and learn. Prizes and recognition await top
+              performers.
             </p>
-
             <p>
-              Stay tuned for official dates and registration details —
-              FusioNxt is coming soon!
+              Stay tuned for official dates and registration details — FusioNxt
+              is coming soon!
             </p>
+          </div>
+
+          <h2 className="text-2xl font-semibold text-center mb-16 text-gray-800">
+            FusioNxt Volunteer Interviews
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
+            <div>
+              <h3 className="font-semibold mb-2">Finance and Secretarial</h3>
+              <div ref={bookingRefs.finance}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Organising and Logistics</h3>
+              <div ref={bookingRefs.organising}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Industrial Outreach</h3>
+              <div ref={bookingRefs.outreach}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">PR and Editorial</h3>
+              <div ref={bookingRefs.pr}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Compering</h3>
+              <div ref={bookingRefs.compering}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Photography</h3>
+              <div ref={bookingRefs.photography}></div>
+            </div>
           </div>
         </section>
       </main>
