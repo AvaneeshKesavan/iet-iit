@@ -16,10 +16,8 @@ export default function FusionNxt() {
 
   // Separate links for each booking
   const bookingLinks = {
-    finance:
-      "https://calendar.google.com/calendar/appointments/schedules/FINANCE_LINK",
-    organising:
-      "https://calendar.google.com/calendar/appointments/schedules/ORGANISING_LINK",
+    organising: "https://calendar.app.google/iE3rCgPyYrvvcSNC8",
+    finance: "https://calendar.app.google/wYWj6TDF7MxGCSNP6",
     outreach:
       "https://calendar.google.com/calendar/appointments/schedules/OUTREACH_LINK",
     pr: "https://calendar.google.com/calendar/appointments/schedules/PR_LINK",
@@ -121,12 +119,12 @@ export default function FusionNxt() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             <div>
-              <h3 className="font-semibold mb-2">Finance and Secretarial</h3>
-              <div ref={bookingRefs.finance}></div>
-            </div>
-            <div>
               <h3 className="font-semibold mb-2">Organising and Logistics</h3>
               <div ref={bookingRefs.organising}></div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Finance and Secretarial</h3>
+              <div ref={bookingRefs.finance}></div>
             </div>
             <div>
               <h3 className="font-semibold mb-2">Industrial Outreach</h3>
