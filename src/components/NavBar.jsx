@@ -45,7 +45,6 @@ export default function NavBar() {
     setIsOpen(false);
   };
 
-  // Update active link when route changes
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveLink("hero");
@@ -55,7 +54,6 @@ export default function NavBar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Scroll listener for homepage
   useEffect(() => {
     if (location.pathname !== "/") return;
 
@@ -93,52 +91,52 @@ export default function NavBar() {
     typeof motion !== "undefined" && typeof AnimatePresence !== "undefined";
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => handleClick({ to: "hero", external: false })}
           aria-label="Go to home"
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 group"
         >
-          <div className="h-16 w-auto relative">
+          <div className="h-14 w-auto relative">
             <img
               src="/assets/iet-iit.png"
               alt="IET Logo"
-              className="h-full object-contain"
+              className="h-full object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </div>
         </button>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
             const isActive = activeLink === link.to;
             return (
               <button
                 key={link.name}
                 onClick={() => handleClick(link)}
-                className="relative px-1 py-1 text-sm font-medium text-black hover:text-blue-600 transition-colors"
+                className={`relative px-1 py-1 text-sm font-semibold tracking-wide ${
+                  isActive ? "text-blue-600" : "text-gray-800"
+                } hover:text-blue-600 transition-all duration-200`}
                 aria-current={isActive ? "true" : undefined}
               >
-                <span className={isActive ? "text-blue-600" : ""}>
-                  {link.name}
-                </span>
+                <span>{link.name}</span>
                 {hasMotion ? (
                   <motion.span
                     layout
                     initial={{ width: "0%" }}
                     animate={{ width: isActive ? "100%" : "0%" }}
                     whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.24 }}
-                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600"
+                    transition={{ duration: 0.3 }}
+                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600 rounded-full"
                   />
                 ) : (
                   <span
-                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600"
+                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600 rounded-full"
                     style={{
                       width: isActive ? "100%" : "0%",
-                      transition: "width .24s",
+                      transition: "width .3s ease",
                     }}
                   />
                 )}
@@ -152,9 +150,9 @@ export default function NavBar() {
           <button
             onClick={() => setIsOpen((s) => !s)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="p-2 rounded-md text-black hover:bg-gray-100 transition"
+            className="p-2 rounded-md text-gray-800 hover:bg-gray-100 transition-all duration-200"
           >
-            {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
       </div>
@@ -164,23 +162,23 @@ export default function NavBar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden bg-white shadow-md"
+              className="md:hidden bg-white/95 backdrop-blur-md shadow-md border-t border-gray-200"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22 }}
+              transition={{ duration: 0.25 }}
             >
-              <div className="flex flex-col px-4 py-3 space-y-2">
+              <div className="flex flex-col px-5 py-3 space-y-2">
                 {navLinks.map((link) => {
                   const isActive = activeLink === link.to;
                   return (
                     <button
                       key={link.name}
                       onClick={() => handleClick(link)}
-                      className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition ${
+                      className={`w-full text-left px-4 py-2 rounded-md text-base font-medium transition-all duration-200 ${
                         isActive
                           ? "text-blue-600 bg-blue-50"
-                          : "text-black hover:bg-gray-100"
+                          : "text-gray-800 hover:bg-gray-100"
                       }`}
                     >
                       {link.name}
@@ -193,18 +191,18 @@ export default function NavBar() {
         </AnimatePresence>
       ) : (
         isOpen && (
-          <div className="md:hidden bg-white shadow-md">
-            <div className="flex flex-col px-4 py-3 space-y-2">
+          <div className="md:hidden bg-white shadow-md border-t border-gray-200">
+            <div className="flex flex-col px-5 py-3 space-y-2">
               {navLinks.map((link) => {
                 const isActive = activeLink === link.to;
                 return (
                   <button
                     key={link.name}
                     onClick={() => handleClick(link)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition ${
+                    className={`w-full text-left px-4 py-2 rounded-md text-base font-medium transition-all ${
                       isActive
                         ? "text-blue-600 bg-blue-50"
-                        : "text-black hover:bg-gray-100"
+                        : "text-gray-800 hover:bg-gray-100"
                     }`}
                   >
                     {link.name}

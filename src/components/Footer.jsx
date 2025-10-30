@@ -17,14 +17,15 @@ export default function Footer() {
       {/* Gradient Top Line */}
       <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 grid md:grid-cols-3 gap-12">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 grid md:grid-cols-3 gap-8">
         {/* Contact Info */}
-        <div className="flex flex-col space-y-8">
-          <h3 className="text-xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <div className="flex flex-col space-y-5">
+          <h3 className="text-lg font-extrabold mb-2 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Contact Us
           </h3>
 
-          <p className="flex items-center gap-3 group">
+          <p className="flex items-center gap-3 group text-sm">
             <FaMapMarkerAlt className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
               href="https://maps.app.goo.gl/upjLstw8FFMrbFLL7"
@@ -36,17 +37,17 @@ export default function Footer() {
             </a>
           </p>
 
-          <p className="flex items-center gap-3 group">
+          <p className="flex items-center gap-3 group text-sm">
             <FaPhoneAlt className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
-              href="tel:+94123456789"
+              href="tel:+94768887795"
               className="hover:underline hover:text-blue-600 transition-colors duration-300"
             >
               +94 76 888 7795
             </a>
           </p>
 
-          <p className="flex items-center gap-3 group">
+          <p className="flex items-center gap-3 group text-sm">
             <FaEnvelope className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
               href="mailto:ietoncampus@iit.ac.lk"
@@ -56,7 +57,7 @@ export default function Footer() {
             </a>
           </p>
 
-          <p className="flex items-center gap-3 group">
+          <p className="flex items-center gap-3 group text-sm">
             <FaUsers className="text-blue-500 group-hover:text-purple-500 transition" />
             <a
               href="https://forms.gle/13rS5iqqSHh3rWSv9"
@@ -69,7 +70,7 @@ export default function Footer() {
           </p>
 
           {/* Social Icons */}
-          <div className="flex space-x-8 mt-16 text-xl">
+          <div className="flex space-x-6 mt-8 text-lg">
             {[
               {
                 icon: FaFacebookF,
@@ -97,7 +98,7 @@ export default function Footer() {
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
                 className={`${social.color} transition-transform duration-200`}
               >
@@ -107,27 +108,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Empty space for balance */}
+        {/* Empty space for layout balance */}
         <div></div>
 
         {/* Copyright */}
-        <div className="text-center md:text-right flex flex-col justify-center space-y-12">
-          <p className="text-gray-600 font-medium">
+        <div className="text-center md:text-right flex flex-col justify-center space-y-6">
+          <p className="text-gray-600 font-medium text-sm leading-relaxed">
             © 2025 IET On Campus – Informatics Institute of Technology. All
             rights reserved.
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-xs leading-relaxed">
             IET On Campus IIT is a student-led initiative in collaboration with
-            the Institution of Engineering and Technology (IET), UK. At IET, we
-            aim to inspire innovation, foster professional growth, and bridge
-            the gap between academia and industry through events, workshops, and
-            collaborative projects.
+            the Institution of Engineering and Technology (IET), UK. We inspire
+            innovation and bridge the gap between academia and industry through
+            workshops and collaborative projects.
           </p>
         </div>
       </div>
 
       {/* Logos at the bottom */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-5 mb-16 flex justify-center items-end gap-6 md:gap-24 scale-120">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-2 mb-6 flex justify-center items-end gap-4 md:gap-16 scale-110">
         {[
           { src: "/assets/iet-iit.png", alt: "IET On Campus IIT" },
           {
@@ -153,7 +153,7 @@ export default function Footer() {
               src={logo.src}
               alt={logo.alt}
               className={`object-contain ${
-                idx === 0 ? "h-16 translate-y-2" : "h-12"
+                idx === 0 ? "h-12 translate-y-1" : "h-10"
               }`}
             />
           </motion.a>

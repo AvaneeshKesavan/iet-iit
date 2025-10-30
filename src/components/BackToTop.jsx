@@ -12,7 +12,7 @@ export default function BackToTop() {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = (scrollTop / docHeight) * 100;
       setScrollY(scrolled);
-      setVisible(scrollTop > 200); // show button after 200px
+      setVisible(scrollTop > 200);
     };
 
     window.addEventListener("scroll", handleScroll);
