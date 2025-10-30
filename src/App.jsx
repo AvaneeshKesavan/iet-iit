@@ -5,6 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
@@ -117,6 +118,7 @@ export default function App() {
           }
         />
       </Routes>
+      <Analytics />
     </Router>
   );
 }
