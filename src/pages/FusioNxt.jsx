@@ -20,7 +20,7 @@ export default function FusionNxt() {
     finance: "https://calendar.app.google/wYWj6TDF7MxGCSNP6",
     outreach:
       "https://calendar.google.com/calendar/appointments/schedules/OUTREACH_LINK",
-    pr: "https://calendar.google.com/calendar/appointments/schedules/PR_LINK",
+    pr: "https://calendar.app.google/M3VxzKPbeMCfhTip8",
     compering:
       "https://calendar.google.com/calendar/appointments/schedules/COMPERING_LINK",
     photography:
