@@ -114,7 +114,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center md:text-right flex flex-col justify-center space-y-6">
           <p className="text-gray-600 font-medium text-sm leading-relaxed">
-            © 2025 IET On Campus – Informatics Institute of Technology. All
+            © 2026 IET On Campus – Informatics Institute of Technology. All
             rights reserved.
           </p>
           <p className="text-gray-500 text-xs leading-relaxed">
