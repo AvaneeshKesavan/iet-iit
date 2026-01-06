@@ -19,11 +19,17 @@ export default function SummerSchool() {
   return (
     <>
       <NavBar />
-      <main className="pt-16 bg-gray-50">
+      <main
+        className="pt-16 bg-gray-50"
+        style={{ fontFamily: "Arial, sans-serif" }}
+      >
         {/* Event Header */}
         <section className="max-w-7xl mx-auto px-4 md:px-8 py-20">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6 tracking-tight bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            IET Summer School
+          <h1
+            className="text-4xl md:text-5xl font-bold text-center mb-6 tracking-tight"
+            style={{ color: "#003A66" }}
+          >
+            IET SUMMER SCHOOL
           </h1>
 
           <p className="text-lg md:text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12">
@@ -37,7 +43,7 @@ export default function SummerSchool() {
             <img
               src="/event/event1.jpg"
               alt="IET Summer School"
-              className="rounded-2xl shadow-xl w-full md:w-3/4 object-cover"
+              className="rounded-lg shadow-xl w-full md:w-3/4 object-cover"
             />
           </div>
 
@@ -66,15 +72,19 @@ export default function SummerSchool() {
 
           {/* Gallery Section */}
           <section className="max-w-7xl mx-auto px-4 md:px-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10 tracking-tight bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Event Gallery
+            <h2
+              className="text-3xl md:text-4xl font-bold text-center mb-10 tracking-tight"
+              style={{ color: "#003A66" }}
+            >
+              EVENT GALLERY
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {galleryImages.map((img, idx) => (
                 <motion.div
                   key={idx}
-                  className="overflow-hidden rounded-xl shadow-lg cursor-pointer group"
+                  className="overflow-hidden rounded-lg shadow-lg cursor-pointer group border"
+                  style={{ borderColor: "#E5E7EB" }}
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 >
