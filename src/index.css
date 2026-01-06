@@ -5,3 +5,13 @@
 html {
     scroll-behavior: smooth;
 }
+
+::selection {
+    background: #22bbe0;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #22bbe0;
+    color: #000;
+}
