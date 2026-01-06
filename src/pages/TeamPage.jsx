@@ -85,39 +85,49 @@ const TeamCard = ({ member, idx }) => (
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: idx * 0.1 }}
     whileHover={{
-      rotateX: 5,
-      rotateY: 5,
-      scale: 1.05,
+      y: -8,
       transition: { type: "spring", stiffness: 300, damping: 20 },
     }}
-    className="relative bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full"
+    className="relative bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full border transition-all duration-300 hover:shadow-xl"
+    style={{ borderColor: "#E5E7EB" }}
   >
-    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-
     <div className="relative z-10 p-6 flex flex-col flex-1 items-center">
       <img
         src={member.image}
         alt={member.name}
-        className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4"
+        className="w-32 h-32 rounded-full object-cover shadow-md mb-4"
+        style={{ border: "4px solid #0058A2" }}
       />
 
-      <h3 className="text-xl font-semibold text-center mb-1 min-h-[3rem]">
+      <h3
+        className="text-xl font-bold text-center mb-1 min-h-[3rem]"
+        style={{ color: "#003A66" }}
+      >
         {member.name}
       </h3>
 
-      <p className="text-gray-600 text-center mb-4 min-h-[2rem]">
+      <p className="text-gray-600 text-center mb-4 min-h-[2rem] font-semibold">
         {member.position}
       </p>
 
-      <div className="flex gap-4 text-blue-600 mt-auto">
-        <a href={`mailto:${member.email}`} className="hover:text-blue-700">
+      <div className="flex gap-4 text-lg mt-auto">
+        <a
+          href={`mailto:${member.email}`}
+          className="transition-colors duration-200"
+          style={{ color: "#0058A2" }}
+          onMouseEnter={(e) => (e.target.style.color = "#003A66")}
+          onMouseLeave={(e) => (e.target.style.color = "#0058A2")}
+        >
           <FaEnvelope />
         </a>
         <a
           href={member.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-700"
+          className="transition-colors duration-200"
+          style={{ color: "#0058A2" }}
+          onMouseEnter={(e) => (e.target.style.color = "#003A66")}
+          onMouseLeave={(e) => (e.target.style.color = "#0058A2")}
         >
           <FaLinkedinIn />
         </a>
@@ -128,7 +138,10 @@ const TeamCard = ({ member, idx }) => (
 
 export default function TeamPage() {
   return (
-    <div className="pt-16 bg-gray-50">
+    <div
+      className="pt-16 bg-gray-50"
+      style={{ fontFamily: "Arial, sans-serif" }}
+    >
       <section className="py-24 max-w-7xl mx-auto px-4 md:px-8 text-center">
         {/* Heading */}
         <motion.h2
@@ -136,11 +149,10 @@ export default function TeamPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold mb-6"
+          className="text-4xl md:text-5xl font-bold mb-6"
+          style={{ color: "#003A66" }}
         >
-          <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            OUR TEAM
-          </span>
+          OUR TEAM
         </motion.h2>
 
         {/* Subheading */}
@@ -151,7 +163,8 @@ export default function TeamPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-lg md:text-xl text-gray-700 mb-20 max-w-3xl mx-auto"
         >
-          Meet the passionate team behind IET On Campus – Informatics Institute of Technology.
+          Meet the passionate team behind IET On Campus – Informatics Institute
+          of Technology.
         </motion.p>
 
         {/* Core Team — 4 in one row on wide screens */}
