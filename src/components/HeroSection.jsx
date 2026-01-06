@@ -21,7 +21,6 @@ export default function HeroSection() {
     countdownEvent,
   } = data;
 
-  // Background carousel
   const [currentImage, setCurrentImage] = useState(0);
   useEffect(() => {
     if (!images.length) return;
@@ -31,7 +30,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [images]);
 
-  // Countdown timer
   const [timeLeft, setTimeLeft] = useState({});
   useEffect(() => {
     if (!countdownEvent?.dateTime) return;
@@ -63,8 +61,10 @@ export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden">
-      {/* Background Carousel */}
+    <section
+      className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden"
+      style={{ fontFamily: "Arial, sans-serif" }}
+    >
       <AnimatePresence>
         {images.map(
           (img, idx) =>
@@ -77,7 +77,7 @@ export default function HeroSection() {
                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
                   isLoaded ? "blur-0 scale-100" : "blur-lg scale-105"
                 }`}
-                style={{ filter: "brightness(0.45)" }}
+                style={{ filter: "brightness(0.35)" }}
                 onLoad={() => setIsLoaded(true)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -88,36 +88,33 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      {/* Subtle dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
-        {/* Left Content */}
         <motion.div
           className="md:w-1/2 text-center md:text-left space-y-5 sm:space-y-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white drop-shadow-2xl">
             {title || "Welcome to IET On Campus IIT"}
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-200/90 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed">
             {subtitle ||
               "Empowering the next generation of engineers and innovators."}
           </p>
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start">
             {button1 && (
               <motion.a
                 href="https://forms.gle/13rS5iqqSHh3rWSv9"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.07 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:shadow-[0_6px_20px_rgba(59,130,246,0.6)] text-base"
+                className="flex items-center justify-center gap-2 px-8 py-3 font-bold transition-all text-white shadow-lg text-base uppercase tracking-wide hover:opacity-90"
+                style={{ backgroundColor: "#0058A2" }}
               >
                 <FaUsers /> {button1}
               </motion.a>
@@ -125,9 +122,10 @@ export default function HeroSection() {
             {button2 && (
               <motion.button
                 onClick={() => navigate("/events")}
-                whileHover={{ scale: 1.07 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-3 border-2 border-blue-500 text-blue-300 hover:text-white hover:bg-blue-600 rounded-lg font-semibold transition-all shadow-[0_4px_14px_rgba(59,130,246,0.3)] text-base"
+                className="flex items-center justify-center gap-2 px-8 py-3 border-2 text-white font-bold transition-all shadow-lg text-base uppercase tracking-wide hover:bg-white/10"
+                style={{ borderColor: "#0058A2" }}
               >
                 <FaCalendarAlt /> {button2}
               </motion.button>
@@ -135,9 +133,8 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Right Countdown Box */}
         <motion.div
-          className="md:w-1/2 flex flex-col items-center bg-black/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl space-y-5 w-full border border-white/10"
+          className="md:w-1/2 flex flex-col items-center bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-lg shadow-2xl space-y-5 w-full border border-white/20"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -146,41 +143,47 @@ export default function HeroSection() {
             {countdownEvent?.name || "Next Event"}
           </h2>
           {countdownEvent?.heading && (
-            <h3 className="text-lg sm:text-xl font-semibold text-blue-300 text-center">
+            <h3
+              className="text-lg sm:text-xl font-semibold text-center"
+              style={{ color: "#22BBE0" }}
+            >
               {countdownEvent.heading}
             </h3>
           )}
           {countdownEvent?.description && (
-            <p className="text-sm sm:text-base text-gray-300 text-center max-w-md">
+            <p className="text-sm sm:text-base text-gray-200 text-center max-w-md">
               {countdownEvent.description}
             </p>
           )}
 
-          {/* Countdown */}
           {timeLeft ? (
             <div className="grid grid-cols-4 gap-3 sm:gap-4 text-center text-white w-full">
               {["days", "hours", "minutes", "seconds"].map((unit) => (
                 <motion.div
                   key={unit}
-                  className="bg-gradient-to-b from-blue-700/80 to-blue-900/80 rounded-xl px-3 sm:px-4 py-3 sm:py-4 shadow-lg flex flex-col items-center justify-center hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all"
+                  className="rounded-lg px-3 sm:px-4 py-3 sm:py-4 shadow-lg flex flex-col items-center justify-center transition-all hover:shadow-xl"
+                  style={{ backgroundColor: "#0058A2" }}
                   whileHover={{ scale: 1.05 }}
                 >
                   {iconMap[unit]}
                   <span className="block text-3xl font-bold">
                     {timeLeft[unit] || 0}
                   </span>
-                  <span className="uppercase text-xs sm:text-sm opacity-85 tracking-wide">
+                  <span className="uppercase text-xs sm:text-sm opacity-90 tracking-wide">
                     {unit}
                   </span>
                 </motion.div>
               ))}
             </div>
           ) : (
-            <div className="w-full bg-blue-800/80 rounded-lg p-5 sm:p-6 shadow-xl text-center">
+            <div
+              className="w-full rounded-lg p-5 sm:p-6 shadow-xl text-center"
+              style={{ backgroundColor: "#0058A2" }}
+            >
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 Coming Soon
               </h2>
-              <p className="text-base text-blue-200">
+              <p className="text-base text-gray-100">
                 Stay tuned! Exciting updates are on the way.
               </p>
             </div>
@@ -188,35 +191,22 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Carousel Dots */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
         {images.map((_, idx) => (
           <button
             key={idx}
             className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               currentImage === idx
-                ? "bg-white scale-110 shadow-[0_0_8px_rgba(255,255,255,0.7)]"
+                ? "scale-110 shadow-[0_0_8px_rgba(34,187,224,0.7)]"
                 : "bg-gray-400 hover:bg-gray-200"
             }`}
+            style={{
+              backgroundColor: currentImage === idx ? "#22BBE0" : undefined,
+            }}
             onClick={() => setCurrentImage(idx)}
           ></button>
         ))}
       </div>
-
-      {/* Gradient text animation */}
-      <style>
-        {`
-          @keyframes gradient-x {
-            0% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-            100% { background-position: 0% center; }
-          }
-          .animate-gradient-x {
-            background-size: 200% auto;
-            animation: gradient-x 6s ease infinite;
-          }
-        `}
-      </style>
     </section>
   );
 }

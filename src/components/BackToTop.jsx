@@ -28,9 +28,9 @@ export default function BackToTop() {
       onClick={scrollToTop}
       className="fixed bottom-8 right-8 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:shadow-xl transition-transform hover:scale-110 active:scale-95 z-50"
       style={{
-        background: `conic-gradient(from 0deg, #2563eb ${
+        background: `conic-gradient(from 0deg, #0058A2 ${
           scrollY * 3.6
-        }deg, #9333ea 0deg)`,
+        }deg, #22BBE0 0deg)`,
       }}
     >
       <FiArrowUp size={26} className="text-white" />

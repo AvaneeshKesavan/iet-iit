@@ -91,9 +91,11 @@ export default function NavBar() {
     typeof motion !== "undefined" && typeof AnimatePresence !== "undefined";
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 z-50 transition-all duration-300">
+    <nav
+      className="fixed top-0 left-0 w-full bg-white shadow-md border-b z-50 transition-all duration-300"
+      style={{ fontFamily: "Arial, sans-serif", borderBottomColor: "#003A66" }}
+    >
       <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
-        {/* Logo */}
         <button
           onClick={() => handleClick({ to: "hero", external: false })}
           aria-label="Go to home"
@@ -108,7 +110,6 @@ export default function NavBar() {
           </div>
         </button>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
             const isActive = activeLink === link.to;
@@ -116,9 +117,12 @@ export default function NavBar() {
               <button
                 key={link.name}
                 onClick={() => handleClick(link)}
-                className={`relative px-1 py-1 text-sm font-semibold tracking-wide ${
-                  isActive ? "text-blue-600" : "text-gray-800"
-                } hover:text-blue-600 transition-all duration-200`}
+                className={`relative px-1 py-1 text-sm font-bold tracking-wide uppercase transition-all duration-200`}
+                style={{ color: isActive ? "#0058A2" : "#003A66" }}
+                onMouseEnter={(e) => (e.target.style.color = "#0058A2")}
+                onMouseLeave={(e) =>
+                  (e.target.style.color = isActive ? "#0058A2" : "#003A66")
+                }
                 aria-current={isActive ? "true" : undefined}
               >
                 <span>{link.name}</span>
@@ -129,14 +133,16 @@ export default function NavBar() {
                     animate={{ width: isActive ? "100%" : "0%" }}
                     whileHover={{ width: "100%" }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600 rounded-full"
+                    className="absolute left-0 bottom-0 h-[3px] rounded-full"
+                    style={{ backgroundColor: "#0058A2" }}
                   />
                 ) : (
                   <span
-                    className="absolute left-0 bottom-0 h-[2px] bg-blue-600 rounded-full"
+                    className="absolute left-0 bottom-0 h-[3px] rounded-full"
                     style={{
                       width: isActive ? "100%" : "0%",
                       transition: "width .3s ease",
+                      backgroundColor: "#0058A2",
                     }}
                   />
                 )}
@@ -145,24 +151,24 @@ export default function NavBar() {
           })}
         </div>
 
-        {/* Mobile Toggle */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen((s) => !s)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="p-2 rounded-md text-gray-800 hover:bg-gray-100 transition-all duration-200"
+            className="p-2 rounded-md hover:bg-gray-100 transition-all duration-200"
+            style={{ color: "#003A66" }}
           >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {hasMotion ? (
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden bg-white/95 backdrop-blur-md shadow-md border-t border-gray-200"
+              className="md:hidden bg-white shadow-md border-t"
+              style={{ borderTopColor: "#E5E7EB" }}
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -175,11 +181,13 @@ export default function NavBar() {
                     <button
                       key={link.name}
                       onClick={() => handleClick(link)}
-                      className={`w-full text-left px-4 py-2 rounded-md text-base font-medium transition-all duration-200 ${
-                        isActive
-                          ? "text-blue-600 bg-blue-50"
-                          : "text-gray-800 hover:bg-gray-100"
+                      className={`w-full text-left px-4 py-2 rounded-md text-base font-bold uppercase transition-all duration-200 ${
+                        isActive ? "" : "hover:bg-gray-100"
                       }`}
+                      style={{
+                        color: isActive ? "#0058A2" : "#003A66",
+                        backgroundColor: isActive ? "#E8F4F8" : "transparent",
+                      }}
                     >
                       {link.name}
                     </button>
@@ -191,7 +199,10 @@ export default function NavBar() {
         </AnimatePresence>
       ) : (
         isOpen && (
-          <div className="md:hidden bg-white shadow-md border-t border-gray-200">
+          <div
+            className="md:hidden bg-white shadow-md border-t"
+            style={{ borderTopColor: "#E5E7EB" }}
+          >
             <div className="flex flex-col px-5 py-3 space-y-2">
               {navLinks.map((link) => {
                 const isActive = activeLink === link.to;
@@ -199,11 +210,13 @@ export default function NavBar() {
                   <button
                     key={link.name}
                     onClick={() => handleClick(link)}
-                    className={`w-full text-left px-4 py-2 rounded-md text-base font-medium transition-all ${
-                      isActive
-                        ? "text-blue-600 bg-blue-50"
-                        : "text-gray-800 hover:bg-gray-100"
+                    className={`w-full text-left px-4 py-2 rounded-md text-base font-bold uppercase transition-all ${
+                      isActive ? "" : "hover:bg-gray-100"
                     }`}
+                    style={{
+                      color: isActive ? "#0058A2" : "#003A66",
+                      backgroundColor: isActive ? "#E8F4F8" : "transparent",
+                    }}
                   >
                     {link.name}
                   </button>

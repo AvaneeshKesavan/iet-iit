@@ -22,41 +22,32 @@ export default function EventsSection() {
   return (
     <section
       id="ourwork"
-      className="relative py-28 bg-gradient-to-b from-white via-gray-50 to-white text-black overflow-hidden"
+      className="relative py-20 text-black overflow-hidden"
+      style={{ fontFamily: "Arial, sans-serif" }}
     >
-      {/* Decorative glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 left-1/3 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-pink-100 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 md:px-8 text-center">
-        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight"
+          className="text-4xl md:text-5xl font-bold mb-8 tracking-tight"
+          style={{ color: "#003A66" }}
         >
-          <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-sm">
-            OUR WORKS
-          </span>
+          OUR WORKS
         </motion.h2>
 
-        {/* Subheading */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-lg md:text-xl font-medium text-gray-700 mb-16 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl mb-16 max-w-3xl mx-auto leading-relaxed text-gray-700"
         >
           Explore our diverse range of events and initiatives designed to
           inspire, educate, and empower students in engineering and technology.
         </motion.p>
 
-        {/* Carousel / Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           <AnimatePresence>
             {visibleEvents.map((event, idx) => (
@@ -67,10 +58,10 @@ export default function EventsSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
               >
-                <div className="relative group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1">
-                  {/* Accent Border Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
-
+                <div
+                  className="relative group bg-white border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
+                  style={{ borderColor: "#E5E7EB" }}
+                >
                   <img
                     src={event.image}
                     alt={event.title}
@@ -78,7 +69,10 @@ export default function EventsSection() {
                   />
 
                   <div className="p-6 flex flex-col gap-3 relative z-10 flex-1 text-left">
-                    <h3 className="text-xl font-semibold text-gray-900 min-h-[2.5rem] group-hover:text-blue-600 transition-colors">
+                    <h3
+                      className="text-xl font-bold min-h-[2.5rem] transition-colors"
+                      style={{ color: "#003A66" }}
+                    >
                       {event.title}
                     </h3>
                     <p className="text-gray-700 flex-1 leading-relaxed">
@@ -91,32 +85,34 @@ export default function EventsSection() {
           </AnimatePresence>
         </div>
 
-        {/* Carousel Dots */}
         <div className="flex justify-center mt-10 space-x-3">
           {eventsData.map((_, idx) => (
             <button
               key={idx}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 currentIndex === idx
-                  ? "bg-blue-600 scale-125 shadow-sm"
+                  ? "scale-125 shadow-sm"
                   : "bg-gray-300 hover:bg-gray-400"
               }`}
+              style={{
+                backgroundColor: currentIndex === idx ? "#0058A2" : undefined,
+              }}
               onClick={() => setCurrentIndex(idx)}
             ></button>
           ))}
         </div>
 
-        {/* View All Events Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-20"
+          className="text-center mt-16"
         >
           <Link
             to="/events"
-            className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+            className="inline-block px-8 py-3 text-white font-bold rounded-md shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wide hover:opacity-90"
+            style={{ backgroundColor: "#0058A2" }}
           >
             View All Events
           </Link>
