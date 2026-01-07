@@ -52,124 +52,152 @@ export default function HeroSection() {
   }, [countdownEvent?.dateTime]);
 
   const iconMap = {
-    days: <FaCalendarAlt className="mx-auto text-lg mb-1 opacity-90" />,
-    hours: <FaClock className="mx-auto text-lg mb-1 opacity-90" />,
-    minutes: <FaClock className="mx-auto text-lg mb-1 opacity-90" />,
-    seconds: <FaHourglassHalf className="mx-auto text-lg mb-1 opacity-90" />,
+    days: <FaCalendarAlt className="mx-auto text-xl mb-2" />,
+    hours: <FaClock className="mx-auto text-xl mb-2" />,
+    minutes: <FaClock className="mx-auto text-xl mb-2" />,
+    seconds: <FaHourglassHalf className="mx-auto text-xl mb-2" />,
   };
-
-  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <section
       className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden"
       style={{ fontFamily: "Arial, sans-serif" }}
     >
-      <AnimatePresence>
+      {/* Background Image Carousel */}
+      <AnimatePresence mode="wait">
         {images.map(
           (img, idx) =>
             currentImage === idx && (
-              <motion.img
+              <motion.div
                 key={idx}
-                src={img}
-                alt={`Slide ${idx + 1}`}
-                loading="lazy"
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-                  isLoaded ? "blur-0 scale-100" : "blur-lg scale-105"
-                }`}
-                style={{ filter: "brightness(0.35)" }}
-                onLoad={() => setIsLoaded(true)}
+                className="absolute inset-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-              />
+                exit={{ opacity: 1 }}
+                transition={{ duration: 0 }}
+              >
+                <img
+                  src={img}
+                  alt={`Slide ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                  style={{ filter: "brightness(0.5)" }}
+                />
+              </motion.div>
             )
         )}
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
+      {/* Professional gradient overlay with IET blue */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(0, 58, 102, 0.4) 0%, rgba(0, 58, 102, 0.3) 50%, rgba(0, 88, 162, 0.2) 100%)",
+        }}
+      ></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+        {/* Left Content */}
         <motion.div
-          className="md:w-1/2 text-center md:text-left space-y-5 sm:space-y-6"
-          initial={{ opacity: 0, x: -50 }}
+          className="md:w-1/2 text-center md:text-left space-y-6 sm:space-y-7"
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white drop-shadow-2xl">
-            {title || "Welcome to IET On Campus IIT"}
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed">
+          <div className="space-y-4">
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white"
+              style={{ textShadow: "2px 4px 8px rgba(0,0,0,0.4)" }}
+            >
+              {title || "Welcome to IET On Campus IIT"}
+            </h1>
+            {/* Accent line under title */}
+            <div
+              className="h-1 w-20 rounded-full mx-auto md:mx-0"
+              style={{ backgroundColor: "#22BBE0" }}
+            />
+          </div>
+
+          <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed font-light">
             {subtitle ||
               "Empowering the next generation of engineers and innovators."}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
             {button1 && (
               <motion.a
                 href="https://forms.gle/13rS5iqqSHh3rWSv9"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-8 py-3 font-bold transition-all text-white shadow-lg text-base uppercase tracking-wide hover:opacity-90"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center justify-center gap-2 px-8 py-4 font-bold transition-all text-white shadow-lg text-base uppercase tracking-wide rounded-md"
                 style={{ backgroundColor: "#0058A2" }}
               >
-                <FaUsers /> {button1}
+                <FaUsers size={18} /> {button1}
               </motion.a>
             )}
             {button2 && (
               <motion.button
                 onClick={() => navigate("/events")}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-8 py-3 border-2 text-white font-bold transition-all shadow-lg text-base uppercase tracking-wide hover:bg-white/10"
-                style={{ borderColor: "#0058A2" }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center justify-center gap-2 px-8 py-4 border-2 text-white font-bold transition-all shadow-lg text-base uppercase tracking-wide rounded-md hover:bg-white/10"
+                style={{ borderColor: "#22BBE0" }}
               >
-                <FaCalendarAlt /> {button2}
+                <FaCalendarAlt size={18} /> {button2}
               </motion.button>
             )}
           </div>
         </motion.div>
 
+        {/* Right Countdown Box */}
         <motion.div
-          className="md:w-1/2 flex flex-col items-center bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-lg shadow-2xl space-y-5 w-full border border-white/20"
-          initial={{ opacity: 0, x: 50 }}
+          className="md:w-1/2 flex flex-col items-center backdrop-blur-xl p-8 sm:p-10 rounded-xl shadow-2xl space-y-6 w-full"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+          }}
+          initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-white drop-shadow-md">
-            {countdownEvent?.name || "Next Event"}
-          </h2>
-          {countdownEvent?.heading && (
-            <h3
-              className="text-lg sm:text-xl font-semibold text-center"
-              style={{ color: "#22BBE0" }}
+          <div className="text-center space-y-3">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-white"
+              style={{ textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
             >
-              {countdownEvent.heading}
-            </h3>
-          )}
-          {countdownEvent?.description && (
-            <p className="text-sm sm:text-base text-gray-200 text-center max-w-md">
-              {countdownEvent.description}
-            </p>
-          )}
+              {countdownEvent?.name || "Next Event"}
+            </h2>
+
+            {countdownEvent?.description && (
+              <p className="text-sm sm:text-base text-gray-100 max-w-md leading-relaxed">
+                {countdownEvent.description}
+              </p>
+            )}
+          </div>
 
           {timeLeft ? (
-            <div className="grid grid-cols-4 gap-3 sm:gap-4 text-center text-white w-full">
+            <div className="grid grid-cols-4 gap-3 sm:gap-4 text-center text-white w-full mt-4">
               {["days", "hours", "minutes", "seconds"].map((unit) => (
                 <motion.div
                   key={unit}
-                  className="rounded-lg px-3 sm:px-4 py-3 sm:py-4 shadow-lg flex flex-col items-center justify-center transition-all hover:shadow-xl"
-                  style={{ backgroundColor: "#0058A2" }}
-                  whileHover={{ scale: 1.05 }}
+                  className="rounded-lg px-3 sm:px-4 py-4 sm:py-6 shadow-lg flex flex-col items-center justify-center transition-all"
+                  style={{
+                    backgroundColor: "rgba(0, 88, 162, 0.9)",
+                    border: "1px solid rgba(34, 187, 224, 0.3)",
+                  }}
+                  whileHover={{
+                    y: -4,
+                    boxShadow: "0 6px 12px rgba(0, 88, 162, 0.4)",
+                    transition: { duration: 0.2 },
+                  }}
                 >
                   {iconMap[unit]}
-                  <span className="block text-3xl font-bold">
-                    {timeLeft[unit] || 0}
+                  <span className="block text-3xl sm:text-4xl font-bold mb-1">
+                    {String(timeLeft[unit] || 0).padStart(2, "0")}
                   </span>
-                  <span className="uppercase text-xs sm:text-sm opacity-90 tracking-wide">
+                  <span className="uppercase text-xs sm:text-sm font-bold tracking-wider opacity-90">
                     {unit}
                   </span>
                 </motion.div>
@@ -177,34 +205,47 @@ export default function HeroSection() {
             </div>
           ) : (
             <div
-              className="w-full rounded-lg p-5 sm:p-6 shadow-xl text-center"
-              style={{ backgroundColor: "#0058A2" }}
+              className="w-full rounded-lg p-6 sm:p-8 shadow-xl text-center"
+              style={{
+                backgroundColor: "rgba(0, 88, 162, 0.9)",
+                border: "1px solid rgba(34, 187, 224, 0.3)",
+              }}
             >
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 Coming Soon
               </h2>
               <p className="text-base text-gray-100">
-                Stay tuned! Exciting updates are on the way.
+                Stay tuned for exciting updates
               </p>
             </div>
           )}
         </motion.div>
       </div>
 
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 flex items-center gap-3">
         {images.map((_, idx) => (
-          <button
+          <motion.button
             key={idx}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              currentImage === idx
-                ? "scale-110 shadow-[0_0_8px_rgba(34,187,224,0.7)]"
-                : "bg-gray-400 hover:bg-gray-200"
-            }`}
-            style={{
-              backgroundColor: currentImage === idx ? "#22BBE0" : undefined,
-            }}
+            className="transition-all duration-300"
             onClick={() => setCurrentImage(idx)}
-          ></button>
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <div
+              className={`rounded-full transition-all duration-300 ${
+                currentImage === idx ? "w-10 h-3" : "w-3 h-3"
+              }`}
+              style={{
+                backgroundColor:
+                  currentImage === idx ? "#22BBE0" : "rgba(255, 255, 255, 0.4)",
+                boxShadow:
+                  currentImage === idx
+                    ? "0 0 10px rgba(34, 187, 224, 0.6)"
+                    : "none",
+              }}
+            />
+          </motion.button>
         ))}
       </div>
     </section>

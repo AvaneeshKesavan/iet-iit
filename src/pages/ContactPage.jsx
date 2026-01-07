@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope } from "react-icons/fa";
+import { FaEnvelope, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,26 +10,62 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus({ type: "", message: "" });
+    setIsSubmitting(true);
 
-    setTimeout(() => {
-      console.log("Email sent to:", "ietoncampus@iit.ac.lk", formData);
-      setStatus("Message sent successfully!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+    try {
+      const response = await fetch("https://formspree.io/f/mykzrero", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "Contact Form Submission",
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: formData.subject || "New Contact Form Submission",
+        }),
+      });
 
+      if (response.ok) {
+        setStatus({
+          type: "success",
+          message: "Message sent successfully!",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setStatus({ type: "", message: "" });
+        }, 5000);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Error sending message. Please try again.",
+      });
+
+      // Hide error message after 5 seconds
       setTimeout(() => {
-        window.location.reload();
-      }, 1500);
-    }, 1500);
+        setStatus({ type: "", message: "" });
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -61,6 +97,29 @@ export default function ContactPage() {
             a message — we'd love to hear from you!
           </motion.p>
 
+          {/* Status Messages */}
+          {status.type === "success" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center justify-center gap-2"
+            >
+              <FaCheckCircle />
+              <span className="font-medium">{status.message}</span>
+            </motion.div>
+          )}
+
+          {status.type === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center justify-center gap-2"
+            >
+              <FaExclamationCircle />
+              <span className="font-medium">{status.message}</span>
+            </motion.div>
+          )}
+
           {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
@@ -85,7 +144,8 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                   style={{
                     focusRing: "2px solid #0058A2",
                   }}
@@ -109,7 +169,8 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                   onFocus={(e) => (e.target.style.borderColor = "#0058A2")}
                   onBlur={(e) => (e.target.style.borderColor = "#D1D5DB")}
                   placeholder="you@example.com"
@@ -130,11 +191,11 @@ export default function ContactPage() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 onFocus={(e) => (e.target.style.borderColor = "#0058A2")}
                 onBlur={(e) => (e.target.style.borderColor = "#D1D5DB")}
-                placeholder="Subject"
+                placeholder="Subject (optional)"
               />
             </div>
 
@@ -151,8 +212,9 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 rows="5"
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none resize-none transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none resize-none transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                 onFocus={(e) => (e.target.style.borderColor = "#0058A2")}
                 onBlur={(e) => (e.target.style.borderColor = "#D1D5DB")}
                 placeholder="Type your message here..."
@@ -163,23 +225,23 @@ export default function ContactPage() {
             <div className="mt-8 text-center">
               <button
                 type="submit"
-                className="px-8 py-3 text-white font-bold rounded-md shadow-md hover:opacity-90 transition uppercase tracking-wide"
+                disabled={isSubmitting}
+                className="px-8 py-3 text-white font-bold rounded-md shadow-md hover:opacity-90 transition uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mx-auto"
                 style={{ backgroundColor: "#0058A2" }}
               >
-                <FaEnvelope className="inline mr-2" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <FaEnvelope />
+                    <span>Send Message</span>
+                  </>
+                )}
               </button>
             </div>
-
-            {/* Status Message */}
-            {status && (
-              <p
-                className="text-center mt-4 font-bold"
-                style={{ color: "#0058A2" }}
-              >
-                {status}
-              </p>
-            )}
           </motion.form>
         </div>
       </section>
