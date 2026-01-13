@@ -6,13 +6,12 @@
     "button2": "Explore Events",
     "images": [
       "/hero/hero6.png",
-      "/hero/hero1.jpg",
       "/hero/hero2.jpg",
       "/hero/hero3.jpg",
-      "/hero/hero4.jpg"
+      "/hero/hero1.jpg"
     ],
     "countdownEvent": {
-      "name": "IET Installation Ceremony 2026",
+      "name": "Ascend 2026",
       "description": "The Next Chapter of Leadership Begins Soon",
       "dateTime": "2026-02-05T23:59:59"
     }

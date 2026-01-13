@@ -87,16 +87,17 @@ export default function HeroSection() {
         )}
       </AnimatePresence>
 
-      {/* Professional gradient overlay with IET blue */}
+      {/* ↓↓↓ Reduced brightness of blue gradient overlay ↓↓↓ */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, rgba(0, 58, 102, 0.4) 0%, rgba(0, 58, 102, 0.3) 50%, rgba(0, 88, 162, 0.2) 100%)",
+            "linear-gradient(to right, rgba(0, 58, 102, 0.25) 0%, rgba(0, 58, 102, 0.2) 50%, rgba(0, 88, 162, 0.15) 100%)",
         }}
       ></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+      {/* ↓↓↓ Increased gap between Welcome & Countdown ↓↓↓ */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between gap-20 lg:gap-28">
         {/* Left Content */}
         <motion.div
           className="md:w-1/2 text-center md:text-left space-y-6 sm:space-y-7"
@@ -111,7 +112,6 @@ export default function HeroSection() {
             >
               {title || "Welcome to IET On Campus IIT"}
             </h1>
-            {/* Accent line under title */}
             <div
               className="h-1 w-20 rounded-full mx-auto md:mx-0"
               style={{ backgroundColor: "#22BBE0" }}
