@@ -1,35 +1,13 @@
 [
-    {
+  {
     "title": "Ascend 2026",
     "description": "The IET On Campus IIT Ascend 2026 Installation Ceremony and Annual General Meeting reflects our continued commitment to empowering future engineers.",
     "image": "/hero/hero6.png",
     "status": "Coming Soon",
     "date": "2026-02-06",
-    "link": "/events/Ascend-2026"
-  },
-  {
-    "title": "IET Summer School",
-    "description": "The IET Summer School is a 4-week technology awareness programme designed to inspire and empower students from schools and universities.",
-    "image": "/event/event1.jpg",
-    "status": "Completed",
-    "date": "2025-07-25",
-    "link": "/events/summerschool"
-  },
-  {
-    "title": "CIPHER Event",
-    "description": "The IET Cipher Hackathon challenges students to decode, innovate, and excel through competitive programming and problem-solving.",
-    "image": "/event/event2.jpg",
-    "status": "Completed",
-    "date": "2025-03-21",
-    "link": "/events/cipher"
-  },
-  {
-    "title": "Ice Cream Dansala",
-    "description": "The IET on Campus IIT successfully conducted an ice cream dansala, demonstrating our chapter's commitment to community service and cultural engagement.",
-    "image": "/event/event3.jpg",
-    "status": "Completed",
-    "date": "2025-05-14",
-    "link": "/events/dansala"
+    "link": "/events/Ascend-2026",
+    "year": "2026",
+    "month": "February"
   },
   {
     "title": "FusioNxt",
@@ -37,15 +15,29 @@
     "image": "/event/event4.jpg",
     "status": "Coming Soon",
     "date": "2026-05-16",
-    "link": "/events/FusioNxt"
+    "link": "/events/FusioNxt",
+    "year": "2026",
+    "month": "May"
   },
   {
-    "title": "IET Installation Ceremony",
-    "description": "The IET On Campus IIT Term 24/25 Installation Ceremony exemplified our dedication to fostering future engineers.",
-    "image": "/event/event5.jpg",
+    "title": "IET Summer School",
+    "description": "The IET Summer School is a 4-week technology awareness programme designed to inspire and empower students from schools and universities.",
+    "image": "/event/event1.jpg",
     "status": "Completed",
-    "date": "2024-11-08",
-    "link": "/events/installation"
+    "date": "2025-07-25",
+    "link": "/events/summerschool",
+    "year": "2025",
+    "month": "July"
+  },
+  {
+    "title": "Ice Cream Dansala",
+    "description": "The IET on Campus IIT successfully conducted an ice cream dansala, demonstrating our chapter's commitment to community service and cultural engagement.",
+    "image": "/event/event3.jpg",
+    "status": "Completed",
+    "date": "2025-05-14",
+    "link": "/events/dansala",
+    "year": "2025",
+    "month": "May"
   },
   {
     "title": "UOW Contest",
@@ -53,6 +45,28 @@
     "image": "/event/event6.jpg",
     "status": "Completed",
     "date": "2025-02-21",
-    "link": "/events/uowcontest"
+    "link": "/events/uowcontest",
+    "year": "2025",
+    "month": "February"
+  },
+  {
+    "title": "CIPHER Event",
+    "description": "The IET Cipher Hackathon challenges students to decode, innovate, and excel through competitive programming and problem-solving.",
+    "image": "/event/event2.jpg",
+    "status": "Completed",
+    "date": "2025-03-21",
+    "link": "/events/cipher",
+    "year": "2025",
+    "month": "March"
+  },
+  {
+    "title": "IET Installation Ceremony",
+    "description": "The IET On Campus IIT Term 24/25 Installation Ceremony exemplified our dedication to fostering future engineers.",
+    "image": "/event/event5.jpg",
+    "status": "Completed",
+    "date": "2024-11-08",
+    "link": "/events/installation",
+    "year": "2024",
+    "month": "November"
   }
 ]
