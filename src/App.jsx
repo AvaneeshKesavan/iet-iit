@@ -20,6 +20,7 @@ import Dansala from "./pages/Dansala";
 import Installation from "./pages/Installation";
 import UOWContest from "./pages/UOWContest";
 import Ascend2026 from "./pages/Ascend-2026";
+import Cipher2 from "./pages/Cipher-2.0";
 import ContactPage from "./pages/ContactPage";
 import BackToTop from "./components/BackToTop";
 
@@ -107,6 +108,7 @@ export default function App() {
         <Route path="/events/installation" element={<Installation />} />
         <Route path="/events/uowcontest" element={<UOWContest />} />
         <Route path="/events/Ascend-2026" element={<Ascend2026 />} />
+        <Route path="/events/cipher-2.0" element={<Cipher2 />} />
         {/* CONTACT PAGE ROUTE */}
         <Route
           path="/contact"
