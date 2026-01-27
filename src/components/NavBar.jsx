@@ -20,10 +20,10 @@ export default function NavBar() {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const navbarEl = document.querySelector("nav");
-      const navbarHeight = navbarEl?.offsetHeight || 72;
+      // Account for navbar (72px) + ticker (48px) = 120px
+      const totalHeaderHeight = 120;
       const elTop =
-        el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+        el.getBoundingClientRect().top + window.scrollY - totalHeaderHeight;
       window.scrollTo({ top: elTop, behavior: "smooth" });
       setActiveLink(id);
     }
@@ -60,17 +60,18 @@ export default function NavBar() {
     const onScroll = () => {
       const sections = ["hero", "about"];
       let current = "hero";
+      const totalHeaderHeight = 120; // navbar + ticker
 
       sections.forEach((sec) => {
         const el = document.getElementById(sec);
         if (!el) return;
-        const offsetTop = el.offsetTop - 72 - 20;
+        const offsetTop = el.offsetTop - totalHeaderHeight - 20;
         if (window.scrollY >= offsetTop) current = sec;
       });
 
       const footerEl = document.getElementById("contact");
       if (footerEl) {
-        const footerTop = footerEl.offsetTop - 72 - 20;
+        const footerTop = footerEl.offsetTop - totalHeaderHeight - 20;
         const scrollBottom = window.scrollY + window.innerHeight;
         if (
           scrollBottom >= footerTop ||

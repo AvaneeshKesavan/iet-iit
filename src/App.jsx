@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
+import Countdown from "./components/CountdownSection";
+import Ticker from "./components/Ticker";
 import AboutSection from "./components/AboutSection";
 import EventsSection from "./components/EventsSection";
 import Footer from "./components/Footer";
@@ -24,6 +26,9 @@ import Cipher2 from "./pages/Cipher-2.0";
 import ContactPage from "./pages/ContactPage";
 import BackToTop from "./components/BackToTop";
 
+// Import events data
+import eventsData from "./data/events.json";
+
 // ScrollToTop component
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,12 +43,18 @@ function ScrollToTop() {
 function Home() {
   const location = useLocation();
 
+  // Find the next upcoming event for countdown (Ascend 2026)
+  const upcomingEvent = eventsData.find(
+    (event) => event.status === "Coming Soon" && event.title === "Ascend 2026",
+  );
+
   useEffect(() => {
     if (location.state?.scrollTo) {
       const id = location.state.scrollTo;
       const el = document.getElementById(id);
       if (el) {
-        const navbarHeight = 72;
+        // Account for navbar (72px) + ticker (48px) = 120px
+        const navbarHeight = 120;
         const elTop =
           el.getBoundingClientRect().top + window.scrollY - navbarHeight;
         window.scrollTo({ top: elTop, behavior: "smooth" });
@@ -52,25 +63,37 @@ function Home() {
   }, [location.state]);
 
   return (
-    <main className="pt-16">
-      <section id="hero">
-        <HeroSection />
-      </section>
+    <>
+      {/* Ticker is fixed below navbar */}
+      <Ticker />
 
-      <section id="about">
-        <AboutSection />
-      </section>
+      <main>
+        <section id="hero">
+          <HeroSection />
+        </section>
 
-      <section id="events">
-        <EventsSection />
-      </section>
+        {/* Only show countdown if there's an upcoming event */}
+        {upcomingEvent && (
+          <section id="countdown">
+            <Countdown event={upcomingEvent} />
+          </section>
+        )}
 
-      <section id="contact">
-        <Footer />
-      </section>
+        <section id="about">
+          <AboutSection />
+        </section>
 
-      <BackToTop />
-    </main>
+        <section id="events">
+          <EventsSection />
+        </section>
+
+        <section id="contact">
+          <Footer />
+        </section>
+
+        <BackToTop />
+      </main>
+    </>
   );
 }
 
@@ -108,7 +131,7 @@ export default function App() {
         <Route path="/events/installation" element={<Installation />} />
         <Route path="/events/uowcontest" element={<UOWContest />} />
         <Route path="/events/Ascend-2026" element={<Ascend2026 />} />
-        <Route path="/events/cipher-2.0" element={<Cipher2 />} />
+        <Route path="/events/Cipher-2.0" element={<Cipher2 />} />
         {/* CONTACT PAGE ROUTE */}
         <Route
           path="/contact"

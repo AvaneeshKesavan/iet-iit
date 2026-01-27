@@ -26,7 +26,7 @@ export default function Installation() {
           </p>
 
           <p className="text-base md:text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
-            February 6, 2026
+            February 11, 2026
           </p>
 
           {/* Event Hero Image */}
