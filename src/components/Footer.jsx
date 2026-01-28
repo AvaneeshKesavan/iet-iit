@@ -17,14 +17,22 @@ export default function Footer() {
       className="bg-white text-black relative z-10 border-t-4"
       style={{ fontFamily: "Arial, sans-serif", borderTopColor: "#0058A2" }}
     >
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230058A2' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 grid md:grid-cols-3 gap-8">
         <div className="flex flex-col space-y-5">
-          <h3
+          {/* <h3
             className="text-lg font-bold mb-2 uppercase"
             style={{ color: "#003A66" }}
           >
             Contact Us
-          </h3>
+          </h3> */}
 
           <p className="flex items-center gap-3 group text-sm">
             <FaMapMarkerAlt
@@ -73,7 +81,7 @@ export default function Footer() {
           <p className="flex items-center gap-3 group text-sm">
             <FaUsers className="transition" style={{ color: "#0058A2" }} />
             <a
-              href="https://forms.gle/13rS5iqqSHh3rWSv9"
+              href="https://forms.gle/3Ecr8ks6Yb3ZSbqz9"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline transition-colors duration-300 font-bold"

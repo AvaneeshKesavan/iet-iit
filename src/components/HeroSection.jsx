@@ -218,7 +218,7 @@ export default function HeroSection() {
                 </motion.button>
 
                 <motion.a
-                  href="https://forms.gle/13rS5iqqSHh3rWSv9"
+                  href="https://forms.gle/3Ecr8ks6Yb3ZSbqz9"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

@@ -6,7 +6,7 @@ export default function Ticker() {
       text: "Welcome to IET On Campus IIT",
     },
     {
-      text: "Ascend 2026 - Installation Ceremony Coming Soon",
+      text: "Ascend 2026 - Installation Ceremony on 11th February 2026",
     },
     {
       text: "Cipher 2.0 - Calling for Volunteers",
@@ -17,7 +17,7 @@ export default function Ticker() {
     <div
       className="fixed left-0 right-0 z-40 overflow-hidden"
       style={{
-        top: "72px", // Position below navbar (navbar height)
+        top: "80px", // Position below navbar (navbar height)
         backgroundColor: "#0058A2",
         borderBottom: "2px solid #22BBE0",
         boxShadow: "0 4px 12px rgba(0, 88, 162, 0.3)",
