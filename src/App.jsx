@@ -4,7 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
@@ -25,6 +25,7 @@ import Ascend2026 from "./pages/Ascend-2026";
 import Cipher2 from "./pages/Cipher-2.0";
 import ContactPage from "./pages/ContactPage";
 import BackToTop from "./components/BackToTop";
+import Preloader from "./components/Preloader";
 
 // Import events data
 import eventsData from "./data/events.json";
@@ -98,53 +99,63 @@ function Home() {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/team"
-          element={
-            <>
-              <TeamPage />
-              <Footer />
-              <BackToTop />
-            </>
-          }
-        />
-        <Route
-          path="/events"
-          element={
-            <>
-              <EventsPage />
-              <Footer />
-              <BackToTop />
-            </>
-          }
-        />
-        <Route path="/events/fusioNxt" element={<FusionNxt />} />
-        <Route path="/events/summerschool" element={<SummerSchool />} />
-        <Route path="/events/cipher" element={<Cipher />} />
-        <Route path="/events/dansala" element={<Dansala />} />
-        <Route path="/events/installation" element={<Installation />} />
-        <Route path="/events/uowcontest" element={<UOWContest />} />
-        <Route path="/events/Ascend-2026" element={<Ascend2026 />} />
-        <Route path="/events/Cipher-2.0" element={<Cipher2 />} />
-        {/* CONTACT PAGE ROUTE */}
-        <Route
-          path="/contact"
-          element={
-            <>
-              <ContactPage />
-              <Footer />
-              <BackToTop />
-            </>
-          }
-        />
-      </Routes>
-      <Analytics />
-    </Router>
+    <>
+      {/* Preloader */}
+      <Preloader onLoadingComplete={() => setIsLoading(false)} />
+
+      {/* Main App - Hidden while loading */}
+      <div style={{ display: isLoading ? "none" : "block" }}>
+        <Router>
+          <ScrollToTop />
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/team"
+              element={
+                <>
+                  <TeamPage />
+                  <Footer />
+                  <BackToTop />
+                </>
+              }
+            />
+            <Route
+              path="/events"
+              element={
+                <>
+                  <EventsPage />
+                  <Footer />
+                  <BackToTop />
+                </>
+              }
+            />
+            <Route path="/events/fusioNxt" element={<FusionNxt />} />
+            <Route path="/events/summerschool" element={<SummerSchool />} />
+            <Route path="/events/cipher" element={<Cipher />} />
+            <Route path="/events/dansala" element={<Dansala />} />
+            <Route path="/events/installation" element={<Installation />} />
+            <Route path="/events/uowcontest" element={<UOWContest />} />
+            <Route path="/events/Ascend-2026" element={<Ascend2026 />} />
+            <Route path="/events/Cipher-2.0" element={<Cipher2 />} />
+            {/* CONTACT PAGE ROUTE */}
+            <Route
+              path="/contact"
+              element={
+                <>
+                  <ContactPage />
+                  <Footer />
+                  <BackToTop />
+                </>
+              }
+            />
+          </Routes>
+          <Analytics />
+        </Router>
+      </div>
+    </>
   );
 }
